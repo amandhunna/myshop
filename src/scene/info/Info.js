@@ -3,9 +3,9 @@ import { Row, Col, Form } from "react-bootstrap";
 import InfoForm from "./InfoForm";
 import "./info.css";
 
-const ContactUs = props => {
+const Info = props => {
   const [isSeller, setIsSeller] = useState(false);
-  return (
+  return (<>
     <section className="container infoPage">
       <Col className="position-relative rounded  p-4 p-lg-5">
         <h2 className="white position-relative pb-4 heading-underline">User Info</h2>
@@ -41,7 +41,7 @@ const ContactUs = props => {
           </Col>
         </Row>
       </Col>
-    </section>
+    </section></>
   );
 };
-export default ContactUs;
+export default Info;

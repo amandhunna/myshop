@@ -14,8 +14,8 @@ function App() {
   return (
     <Router>
       <nav>
-        <Link to="/"> Main</Link>
-        <Link to="/info" >Info</Link>
+        <Link to="/"> Saada Baazar</Link>
+        <Link className="secondary" to="/info" >Info</Link>
       </nav>
       <Switch>
         <Route path="/info" component={Info} />

@@ -1,0 +1,20 @@
+nav {
+  background: #343a40 !important;
+  color: white;
+  padding: 1rem;
+}
+
+nav > a {
+  color: white;
+  padding: 1rem;
+  font-size: 20px;
+}
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.secondary {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+}

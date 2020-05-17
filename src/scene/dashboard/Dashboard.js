@@ -51,7 +51,7 @@ export default function Dashboard(props) {
     const [modalItems, setModalItems] = useState([]);
     return (
         <>
-            <Navbar history={props.history} />
+            {/* <Navbar history={props.history} /> */}
             <div className="d-flex flex-column justify-content-center  align-self-center">
                 <h1 className="d-flex flex-column justify-content-center  align-self-center">Orders</h1>
                 <ol>
