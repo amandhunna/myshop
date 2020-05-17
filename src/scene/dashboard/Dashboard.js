@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Row, Col, Modal, Container, Form, InputGroup, FormControl } from "react-bootstrap";
 import DateTimePicker from 'react-datetime-picker';
+import Navbar from "../../lib/components/NavBar";
 import "./dashboard.css";
-import 'react-calendar/dist/Calendar.css';
+// import 'react-calendar/dist/Calendar.css';
 
 const data = [{
     customerName: "Abc",
@@ -44,33 +45,36 @@ const getItems = customer => {
     </div>
     )
 }
-export default function Dashboard() {
+export default function Dashboard(props) {
     const [modalShow, setModalShow] = useState(false);
     const [rejectedModalShow, setRejectedModalShow] = useState(false)
     const [modalItems, setModalItems] = useState([]);
     return (
-        <div className="d-flex flex-column justify-content-center  align-self-center">
-            <h1 className="d-flex flex-column justify-content-center  align-self-center">Orders</h1>
-            <ol>
-                {data.map(customer => {
-                    return (<li >
-                        <div className="order d-flex mt-3 p-2">
-                            {getItems(customer)}
-                            <div className="order-action d-flex w-100">
-                                <Button className="" variant="danger" onClick={() => setRejectedModalShow(true)}>Reject order</Button>
-                                <Button className="" variant="primary" onClick={() => {
-                                    setModalShow(true);
-                                    setModalItems(customer);
-                                }}
-                                >Fulfil order</Button>
+        <>
+            <Navbar history={props.history} />
+            <div className="d-flex flex-column justify-content-center  align-self-center">
+                <h1 className="d-flex flex-column justify-content-center  align-self-center">Orders</h1>
+                <ol>
+                    {data.map(customer => {
+                        return (<li >
+                            <div className="order d-flex mt-3 p-2">
+                                {getItems(customer)}
+                                <div className="order-action d-flex w-100">
+                                    <Button className="" variant="danger" onClick={() => setRejectedModalShow(true)}>Reject order</Button>
+                                    <Button className="" variant="primary" onClick={() => {
+                                        setModalShow(true);
+                                        setModalItems(customer);
+                                    }}
+                                    >Fulfil order</Button>
+                                </div>
                             </div>
-                        </div>
-                    </li>)
-                })}
-            </ol>
-            <MydModalWithGrid show={modalShow} modalItems={modalItems} onHide={() => setModalShow(false)} />
-            <RejectedModal show={rejectedModalShow} onHide={() => setRejectedModalShow(false)} />/>
+                        </li>)
+                    })}
+                </ol>
+                <MydModalWithGrid show={modalShow} modalItems={modalItems} onHide={() => setModalShow(false)} />
+                <RejectedModal show={rejectedModalShow} onHide={() => setRejectedModalShow(false)} />/>
         </div >
+        </>
     )
 }
 
