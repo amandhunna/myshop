@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Row, Col, Modal, Container } from "react-bootstrap";
+import { Button, Row, Col, Modal, Container, Form, InputGroup, FormControl } from "react-bootstrap";
 import DateTimePicker from 'react-datetime-picker';
 import "./dashboard.css";
 import 'react-calendar/dist/Calendar.css';
@@ -9,7 +9,7 @@ const data = [{
     location: "location",
     phone: "phone",
     email: "email",
-    orderItems: ["orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems"],
+    orderItems: ["orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems", "orderItems"],
     expectedDelivery: "32$%^&6",
     deliveryType: "pick up"
 },
@@ -33,19 +33,20 @@ const data = [{
 }]
 
 const getItems = customer => {
-    return (<div className="order-detail d-flex flex-column justify-content-start">
+    return (<div className="order-detail d-flex flex-column">
         <div>Name: {customer.customerName}</div>
         <div>Location: {customer.location}</div>
         <div>Phone: {customer.phone}</div>
         <div>Email: {customer.email}</div>
         <div>Delivery type: {customer.deliveryType}</div>
         <div>Expected delivery: {customer.expectedDelivery}</div>
-        <div>Order items: <ol>{customer.orderItems.map(item => <li>{item}</li>)}</ol></div>
+        <div>Order items: <ol>{customer.orderItems && customer.orderItems.map(item => <li className="ml-4">{item}</li>)}</ol></div>
     </div>
     )
 }
 export default function Dashboard() {
     const [modalShow, setModalShow] = useState(false);
+    const [rejectedModalShow, setRejectedModalShow] = useState(false)
     const [modalItems, setModalItems] = useState([]);
     return (
         <div className="d-flex flex-column justify-content-center  align-self-center">
@@ -53,24 +54,52 @@ export default function Dashboard() {
             <ol>
                 {data.map(customer => {
                     return (<li >
-                        <div className="order d-flex justify-content-around ml-3 mt-3 mr-3 p-1">
+                        <div className="order d-flex mt-3 p-2">
                             {getItems(customer)}
-                            <div className="order-action d-flex flex-column jus  align-self-center ml-2">
-                                <Button className="my-3 w-100" variant="primary" onClick={() => {
+                            <div className="order-action d-flex">
+                                <Button className="" variant="danger" onClick={() => setRejectedModalShow(true)}>Reject order</Button>
+                                <Button className="" variant="primary" onClick={() => {
                                     setModalShow(true);
-                                    setModalItems(customer.orderItems);
+                                    setModalItems(customer);
                                 }}
                                 >Fulfil order</Button>
-                                <Button className="my-3 w-100" variant="danger" onClick={() => setModalShow(true)}>Reject order</Button>
                             </div>
                         </div>
                     </li>)
                 })}
             </ol>
             <MydModalWithGrid show={modalShow} modalItems={modalItems} onHide={() => setModalShow(false)} />
+            <RejectedModal show={rejectedModalShow} onHide={() => setRejectedModalShow(false)} />/>
         </div >
     )
 }
+
+const getModalItems = customer => {
+    return (<div className="order-detail d-flex flex-column">
+        <div>Name: {customer.customerName}</div>
+        <div>Location: {customer.location}</div>
+        <div>Phone: {customer.phone}</div>
+        <div>Email: {customer.email}</div>
+        <div>Delivery type: {customer.deliveryType}</div>
+        <div>Expected delivery: {customer.expectedDelivery}</div>
+        <div>Order items: <ol>{customer.orderItems && customer.orderItems.map(item =>
+            <li className="ml-4">
+                <Form.Check
+                    type="checkBox"
+                    name="item"
+                    value={item}
+                    onClick={(e) => {
+                        const value = e.target.value;
+                    }}
+                    id={item}
+                    label={item}
+                /></li>)}</ol></div>
+    </div>
+    )
+}
+
+
+
 function MydModalWithGrid(props) {
     const [timeDate, setTimeDate] = useState(new Date());
 
@@ -80,25 +109,60 @@ function MydModalWithGrid(props) {
         <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Using Grid in Modal
+                    Order detail
           </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Container>
                     <Row className="show-grid">
                         <Col>
-                            <DateTimePicker
-                                amPmAriaLabel={true}
-                                onChange={onChangeTimeDate}
-                                value={timeDate}
-                            />
+                            {
+                                getModalItems(props.modalItems)}
+                            <div className="dateTimePicker">
+                                Available at: <DateTimePicker
+                                    amPmAriaLabel={true}
+                                    onChange={onChangeTimeDate}
+                                    value={timeDate}
+                                />
+                            </div>
                         </Col>
                     </Row>
-                    <div>HI</div>
                 </Container>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={props.onHide}>Done</Button>
+            </Modal.Footer>
+        </Modal >
+    );
+}
+
+function RejectedModal(props) {
+
+    return (
+        <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Order detail
+          </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Container>
+                    <Row className="show-grid">
+                        <Col>
+                            <div>
+                                <InputGroup>
+                                    <InputGroup.Prepend>
+                                        <InputGroup.Text>Reason</InputGroup.Text>
+                                    </InputGroup.Prepend>
+                                    <FormControl as="textarea" aria-label="With textarea" />
+                                </InputGroup>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={props.onHide}>Done</Button>
             </Modal.Footer>
         </Modal >
     );
