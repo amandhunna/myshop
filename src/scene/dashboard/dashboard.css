@@ -1,6 +1,7 @@
-
 ol {
-  margin: auto;
+  margin: 0;
+  padding-left: 30px;
+  /* list-style-position: inside; */
 }
 .order {
   background: aliceblue;
@@ -14,21 +15,22 @@ ol {
 }
 .order-action {
   position: absolute;
+  justify-content: space-around;
   bottom: 0;
   left: 0;
 }
-
 
 /* modal */
 span.react-datetime-picker__inputGroup__divider {
   color: black;
 }
 .dateTimePicker {
-    border: 1px solid;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background: cornsilk;
-    padding: 0.5rem;
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: cornsilk;
+  padding: 0.5rem;
 }
+

@@ -56,7 +56,7 @@ export default function Dashboard() {
                     return (<li >
                         <div className="order d-flex mt-3 p-2">
                             {getItems(customer)}
-                            <div className="order-action d-flex">
+                            <div className="order-action d-flex w-100">
                                 <Button className="" variant="danger" onClick={() => setRejectedModalShow(true)}>Reject order</Button>
                                 <Button className="" variant="primary" onClick={() => {
                                     setModalShow(true);
