@@ -18,10 +18,10 @@ const getFormCmsData = {
         "placeholder": "Your email address *"
       },
       "phoneNumber": {
-        "placeholder": "Your phone number"
+        "placeholder": "Your phone number *"
       },
       "location": {
-        "placeholder": "Your location/address"
+        "placeholder": "Your location/address *"
       },
       "shopName": {
         "placeholder": "Shop Name *"
@@ -46,6 +46,7 @@ const InfoForm = props => {
   const [location, setLocation] = useState("");
   const [shopName, setShopName] = useState("");
   const [sellItem, setSellItem] = useState("");
+  const [openOn, setOpenOn] = useState("");
 
   const [cmsData] = useState(getFormCmsData.contactUsForm);
 
@@ -93,6 +94,7 @@ const InfoForm = props => {
         location,
         shopName,
         sellItem,
+        openOn
       };
     };
   }
@@ -202,6 +204,22 @@ const InfoForm = props => {
                     <div className="error-message">{errorMessage.sellItem}</div>
                   ) : null}
                 </Form.Group>
+              }
+              {isSeller &&
+
+                [{ value: "evenDay", label: "Even days" }, { value: "oddDay", label: "Odd days" }, { value: "daily", label: "Daily" }].map(radioBox => (
+                  <Form.Check
+                    type="radio"
+                    name="openDay"
+                    checked={openOn[radioBox.value]}
+                    value={radioBox.value}
+                    onClick={(e) => {
+                      const value = e.target.value;
+                      setOpenOn(value)
+                    }}
+                    id={radioBox.value}
+                    label={radioBox.label}
+                  />))
               }
               <Button className="g-button d--inline-block" variant="primary" onClick={onSubmit}>
                 {button.title}

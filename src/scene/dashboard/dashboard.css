@@ -11,3 +11,7 @@ ol {
 .order-action {
   flex-basis: 30%;
 }
+
+span.react-datetime-picker__inputGroup__divider {
+  color: black;
+}
