@@ -6,15 +6,17 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Dashboard from "./scene/dashboard";
 import Info from "./scene/info";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" component={Info} />
+        <Route path="/info" component={Info} />
+        <Route path="/" component={Dashboard} />
       </Switch>
-  </Router>
+    </Router>
   );
 }
 

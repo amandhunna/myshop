@@ -1,0 +1,13 @@
+ol {
+  margin: auto;
+}
+.order {
+  background: aliceblue;
+  color: black;
+}
+.order-detail {
+  flex-basis: 70%;
+}
+.order-action {
+  flex-basis: 30%;
+}
