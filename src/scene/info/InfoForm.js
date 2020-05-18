@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Form, Col } from "react-bootstrap";
 
 import yupValidate from "./yup";
@@ -86,7 +86,7 @@ const InfoForm = props => {
 
     const hasError = !errorArr.some(value => value !== "");
     if (!hasError) {
-      const data = {
+ /*      const data = {
         firstName,
         lastName,
         workEmail,
@@ -95,7 +95,7 @@ const InfoForm = props => {
         shopName,
         sellItem,
         openOn
-      };
+      }; */
     };
   }
 

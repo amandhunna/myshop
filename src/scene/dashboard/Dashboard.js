@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Row, Col, Modal, Container, Form, InputGroup, FormControl } from "react-bootstrap";
 import DateTimePicker from 'react-datetime-picker';
-import Navbar from "../../lib/components/NavBar";
+//import Navbar from "../../lib/components/NavBar";
 import "./dashboard.css";
-// import 'react-calendar/dist/Calendar.css';
 
 const data = [{
     customerName: "Abc",
@@ -93,7 +92,7 @@ const getModalItems = customer => {
                     name="item"
                     value={item}
                     onClick={(e) => {
-                        const value = e.target.value;
+                       // const value = e.target.value;
                     }}
                     id={item}
                     label={item}
