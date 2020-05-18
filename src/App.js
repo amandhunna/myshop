@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Dashboard from "./scene/dashboard";
+import Dashboard from "./scene/order";
 import Info from "./scene/info";
 import Intro from "./scene/intro"
 

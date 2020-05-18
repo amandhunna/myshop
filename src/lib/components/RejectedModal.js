@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Row, Col, Modal, InputGroup, FormControl, Container, Form } from "react-bootstrap";
+import { Button, Row, Col, Modal, InputGroup, FormControl, Container } from "react-bootstrap";
 
 const RejectedModal = (props) => {
 

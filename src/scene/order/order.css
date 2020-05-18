@@ -4,20 +4,11 @@ ol {
   /* list-style-position: inside; */
 }
 .order {
-  background: aliceblue;
-  color: black;
   height: 400px;
-  position: relative;
 }
 .order-detail {
   overflow: scroll;
   height: 90%;
-}
-.order-action {
-  position: absolute;
-  justify-content: space-around;
-  bottom: 0;
-  left: 0;
 }
 
 /* modal */
@@ -33,4 +24,3 @@ span.react-datetime-picker__inputGroup__divider {
   background: cornsilk;
   padding: 0.5rem;
 }
-
