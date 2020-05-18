@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Intro() {
     return (
-        <div>
+        <div className="m-5">
             <ul>
                 <li>Through this app, I have tried to bring local shops on the web</li>
                 <li>Customers can request for the product and the time according to their everyday schedule and Can pick up their packages from the shop.

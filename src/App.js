@@ -9,17 +9,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Dashboard from "./scene/dashboard";
 import Info from "./scene/info";
+import Intro from "./scene/intro"
 
 function App() {
   return (
     <Router>
       <nav>
         <Link to="/"> Saada Baazar</Link>
+        <Link className="secondary" to="/orders">Orders</Link>
         <Link className="secondary" to="/info" >Info</Link>
       </nav>
       <Switch>
         <Route path="/info" component={Info} />
-        <Route path="/" component={Dashboard} />
+        <Route path="/orders" component={Dashboard} />
+        <Route path="/" component={Intro} />
       </Switch>
     </Router>
   );
