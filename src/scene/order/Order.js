@@ -23,7 +23,7 @@ const getItems = customer => {
 const GetCard = (props) => {
     const { cardNumber, customer, setModalShow, setModalItems, setRejectedModalShow } = props;
     return (<Card>
-        <Card.Header className="d-flex justify-content-center">#Card1: {cardNumber}</Card.Header>
+        <Card.Header className="d-flex justify-content-center">#Card: {cardNumber}</Card.Header>
         <Card.Body>
             <Card.Title>Special title treatment</Card.Title>
             <Card.Text className="order">
