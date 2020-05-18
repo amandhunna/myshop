@@ -42,20 +42,15 @@ const GetCard = (props) => {
 }
 
 const GetCards = props => {
-    const [cards, setCards] = useState([[]]);
+    const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        const items = [];
-        console.log(data.length)
-        while (data.length) {
-            items.push(data.splice(0, 3));
-        }
-        setCards(items)
+        setCards(data)
     }, [])
     let count = 0;
-    const cardsDOm = cards.map((rowData) => <Row>
-        {rowData.map((cardData) => <Col className="mt-3" sm={12} md={4} lg={4} ><GetCard customer={cardData} cardNumber={++count} {...props} /></Col>)}
-    </Row>)
+    const cardsDOm = <Row>
+        {cards.map((cardData) => <Col className="mt-3" sm={12} md={6} lg={4} ><GetCard customer={cardData} cardNumber={++count} {...props} /></Col>)}
+    </Row>
 
     return cardsDOm
 
