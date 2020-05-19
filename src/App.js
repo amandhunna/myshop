@@ -13,19 +13,20 @@ import Order from "./scene/order";
 import Info from "./scene/info";
 import Intro from "./scene/intro"
 import BuyProducts from './scene/order/buyProducts';
+import GoogleLogin from "./lib/components/GoogleLogin";
+
 
 function App() {
   return (
 
     <Router>
-      <a href="https://saadabazar.netlify.app/google88b47ffcc77d18d8.html">check</a>
       <nav>
-        <Link to="/"> Saada Baazar</Link>
+        <Link to="/"> Saada Bazar</Link>
         <Link className="secondary" to="/orders">Orders</Link>
         <Link className="secondary" to="/info" >Info</Link>
         <Link className="secondary" to="/addProducts" >Add Products</Link>
         <Link className="secondary" to="/buyProducts" >Buy Products</Link>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <div class="g-signIn"><GoogleLogin /></div>
       </nav>
       <Switch>
         <Route path="/info" component={Info} />
