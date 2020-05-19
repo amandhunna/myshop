@@ -1,4 +1,4 @@
-nav {
+header {
   background: #343a40 !important;
   color: white;
   padding: 1rem;
@@ -17,4 +17,26 @@ a:hover {
 .secondary {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
+}
+
+.googleLogin {
+  background-color: indianred !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
+.googleLogin * {
+  border-radius: 10px !important;
+}
+.humburger {
+  border: 2px solid white;
+  height: 25px;
+  width: 32px;
+  border-width: 2px 0;
+}
+.humburger {
+  /* https://medium.com/@hollybourneville/creating-border-lines-using-pseudo-elements-in-css-a460396299e8 */
+  position: relative;
+}
+i.fa.fa-bars {
+  font-size: 30px;
 }

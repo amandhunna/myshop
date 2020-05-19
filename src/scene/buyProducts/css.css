@@ -1,0 +1,13 @@
+label.form-label {
+  width: max-content;
+}
+
+.side-border {
+  border: 1px solid tomato;
+  border-width: 0px 1px 0px 1px;
+}
+
+strong.d-flex.justify-content-center {
+  border: 1px solid tomato;
+  border-width: 1px 0;
+}
