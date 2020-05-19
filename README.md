@@ -2,8 +2,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 links: 
 css
-https://hackerthemes.com/bootstrap-cheatsheet/#flex-wrap
-
+- https://hackerthemes.com/bootstrap-cheatsheet/#flex-wrap
+- https://picsum.photos/
+- https://www.bootstrapcdn.com/fontawesome/
+- https://fontawesome.com/v4.7.0/icon/search
 ## Available Scripts
 
 In the project directory, you can run:
