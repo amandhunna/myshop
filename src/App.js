@@ -18,6 +18,7 @@ function App() {
   return (
 
     <Router>
+      <a href="https://saadabazar.netlify.app/google88b47ffcc77d18d8.html">check</a>
       <nav>
         <Link to="/"> Saada Baazar</Link>
         <Link className="secondary" to="/orders">Orders</Link>
