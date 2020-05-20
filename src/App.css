@@ -27,6 +27,8 @@ a:hover {
 .secondary {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
+  display: flex;
+  align-items: center;
 }
 
 .googleLogin {
@@ -90,13 +92,21 @@ nav#sideBar {
   width: 0;
   z-index: -9;
 }
-/* @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .active {
+    padding: 0px;
+    width: auto;
+    z-index: 1;
   }
-
   nav#sideBar {
+    display: flex !important;
+    flex-direction: row;
+    background: none;
+    color: black;
+    position: relative;
   }
   .inactive {
+    z-index: 1;
+    width: auto;
   }
 }
- */
