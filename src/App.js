@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,15 +17,16 @@ import GoogleLogin from "./lib/components/GoogleLogin";
 
 
 function App() {
+  const [active, setActive] = useState("inactive");
   return (
 
     <Router>
       <header className="d-flex justify-content-between align-items-center">
-        <div className="humburger d-md-none"><span></span>
-        </div>
-        <i class="fa fa-bars"></i>
-        <nav className="d-none d-md-block">
-          <Link to="/"> Saada Bazar</Link>
+        <span className="humburger d-md-none" onClick={() => setActive("active")}><i></i></span>
+        <nav id="sideBar" className={`d-none d-md-flex ${active}`}>
+          <span className="homeLink">
+            <Link to="/"> Saada Bazar</Link>
+            <i className="d-md-none" onClick={() => setActive("inactive")}><i class="fa fa-times"></i></i></span>
           <Link className="secondary" to="/orders">Orders</Link>
           <Link className="secondary" to="/info" >Info</Link>
           <Link className="secondary" to="/addProducts" >Add Products</Link>

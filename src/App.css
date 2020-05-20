@@ -1,10 +1,17 @@
 header {
   background: #343a40 !important;
   color: white;
-  padding: 1rem;
+  padding-right: 0.5rem;
 }
 
-nav > a {
+.homeLink {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+nav > a,
+.homeLink > a {
   color: white;
   padding: 1rem;
   font-size: 20px;
@@ -14,6 +21,9 @@ a:hover {
   text-decoration: none;
 }
 
+.active > a {
+  margin-left: 10px;
+}
 .secondary {
   color: rgba(255, 255, 255, 0.5);
   font-size: 16px;
@@ -27,16 +37,66 @@ a:hover {
 .googleLogin * {
   border-radius: 10px !important;
 }
-.humburger {
-  border: 2px solid white;
-  height: 25px;
-  width: 32px;
-  border-width: 2px 0;
-}
-.humburger {
-  /* https://medium.com/@hollybourneville/creating-border-lines-using-pseudo-elements-in-css-a460396299e8 */
+/* https://medium.com/@hollybourneville/creating-border-lines-using-pseudo-elements-in-css-a460396299e8 */
+
+span.humburger {
+  width: 30px;
+  height: 20px;
   position: relative;
+  display: flex;
+  align-items: center;
+  margin: 1rem;
 }
-i.fa.fa-bars {
-  font-size: 30px;
+
+span.humburger > i {
+  width: 100%;
+  background: white;
+  height: 2px;
 }
+
+span.humburger::before,
+span.humburger::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0;
+  height: 2px;
+  background: white;
+  width: 100%;
+}
+
+span.humburger::after {
+  top: auto;
+  bottom: 0;
+}
+
+nav#sideBar {
+  display: flex !important;
+  flex-direction: column;
+  background: #cd5c5cf2;
+  color: black;
+  transition: all 0.3s linear;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+}
+.active {
+  padding: 4px;
+  width: 50%;
+  z-index: 99;
+}
+.inactive {
+  width: 0;
+  z-index: -9;
+}
+/* @media screen and (min-width: 768px) {
+  .active {
+  }
+
+  nav#sideBar {
+  }
+  .inactive {
+  }
+}
+ */

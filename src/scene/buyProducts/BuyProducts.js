@@ -1,6 +1,29 @@
 import React from 'react'
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Card, Button, Image } from "react-bootstrap";
 import "./css.css";
+import { dummyProducts, dummyCart } from "./dummyData";
+
+const ProductsList = () => {
+    const data = dummyProducts;
+
+    return data.map(item => <Card>
+        <Card.Header className="d-flex w-100">Product title</Card.Header>
+        <Card.Body>
+            {/*  <Card.Title>Product title</Card.Title> */}
+            <Card.Text className="order d-flex justify-content-center">
+                <Image src="https://i.picsum.photos/id/545/200/300.jpg" rounded />
+            </Card.Text>
+            <div className="w-100">
+                <Button
+                    className="mx-2 w-100"
+                    variant="primary"
+                    onClick={() => { }}>Add to cart</Button>
+            </div>
+        </Card.Body>
+    </Card>)
+
+}
+
 
 const BuyProducts = () => {
     return (
@@ -22,6 +45,7 @@ const BuyProducts = () => {
             </Col>
             <Col className="side-border" md={5}>
                 <strong className="d-flex justify-content-center  mb-3">Products List</strong>
+                <ProductsList />
             </Col>
             <Col md={5}>
                 <strong className="d-flex justify-content-center  mb-3">Your cart</strong>
