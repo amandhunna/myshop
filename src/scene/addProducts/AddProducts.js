@@ -7,7 +7,7 @@ const AddProducts = () => {
     const getProductsList = () => {
         const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
-        return data.map(item => <ProductCard btnType="deleteEdit" />)
+        return data.map(item => <ProductCard btnType="dangerPrimary" />)
 
     }
 

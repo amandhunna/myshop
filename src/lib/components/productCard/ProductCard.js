@@ -8,23 +8,24 @@ const ProductCard = (props) => {
         title = "Product",
         primaryBtnText,
         dangerBtnText,
+        variant,
         btnType
     } = props;
 
     let buttons
 
     switch (btnType) {
-        case "addToCart":
+        case "singleBtn":
             buttons = (<div className="w-100">
                 <Button
                     className="w-100"
-                    variant="primary"
-                    onClick={() => { }}>{primaryBtnText || "Add to cart"}</Button>
+                    variant={variant || "primary"}
+                    onClick={() => { }}>{primaryBtnText || dangerBtnText || "Add to cart"}</Button>
             </div>)
             break;
 
-        case "deleteEdit":
-            buttons = (<div className="w-100 d-flex justify-content-around">
+        case "dangerPrimary":
+            buttons = (<div className="deleteEditBtn">
                 <Button
                     variant="danger"
                     onClick={() => { }}>{dangerBtnText || "Delete"}</Button>
