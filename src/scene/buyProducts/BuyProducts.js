@@ -1,56 +1,53 @@
 import React from 'react'
 import { Form, Row, Col, Card, Button, Image } from "react-bootstrap";
 import "./css.css";
+import ProductCard from "../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
 
 const ProductsList = () => {
-    const data = dummyProducts;
-
-    return data.map(item => <Card>
-        <Card.Header className="d-flex w-100">Product title</Card.Header>
-        <Card.Body>
-            {/*  <Card.Title>Product title</Card.Title> */}
-            <Card.Text className="order d-flex justify-content-center">
-                <Image src="https://i.picsum.photos/id/545/200/300.jpg" rounded />
-            </Card.Text>
-            <div className="w-100">
-                <Button
-                    className="mx-2 w-100"
-                    variant="primary"
-                    onClick={() => { }}>Add to cart</Button>
-            </div>
-        </Card.Body>
-    </Card>)
-
+    const data = [...dummyProducts];
+    return data.map(item => <ProductCard btnType="addToCart" />)
 }
 
 
 const BuyProducts = () => {
     return (
-        <Row className="m-3">
-            <Col md={2}>
-                <strong className="d-flex justify-content-center mb-3">Filters</strong>
-                <Form>
-                    <Form.Group controlId="exampleForm.SelectCustom">
-                        <Form.Label>Select Shops near you</Form.Label>
-                        <Form.Control as="select" custom>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </Form.Control>
-                    </Form.Group>
-                </Form>
-            </Col>
-            <Col className="side-border" md={5}>
-                <strong className="d-flex justify-content-center  mb-3">Products List</strong>
-                <ProductsList />
-            </Col>
-            <Col md={5}>
-                <strong className="d-flex justify-content-center  mb-3">Your cart</strong>
-            </Col>
-        </Row>
+        <>
+            <Row className="filterBar">
+                <Col md={1} className="font-size-30 center-middle">
+                    <i className="fa fa-filter"></i>
+                </Col>
+                <Col md={10} className="">
+                    <Form.Label className=""></Form.Label>
+                    <Form className="w-100">
+                        <Form.Group controlId="selectShop" >
+                            <Form.Control as="select" custom>
+                                <option checked>Select Shops near you</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Form>
+                </Col>
+                <Col md={1} className="font-size-30 center-middle">
+                    <i class="fa fa-shopping-cart"></i>
+                </Col>
+            </Row>
+            <Row>
+                <Col className="side-border" md={8}>
+                    <strong className="d-flex justify-content-center  mb-3">Products List</strong>
+                    <Row>
+                        <ProductsList />
+                    </Row>
+                </Col>
+                <Col md={4}>
+                    <strong className="d-flex justify-content-center  mb-3">Your cart</strong>
+                </Col>
+            </Row>
+        </>
 
     )
 }

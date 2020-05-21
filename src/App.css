@@ -110,3 +110,13 @@ nav#sideBar {
     width: auto;
   }
 }
+
+.font-size-30 {
+  font-size: 30px;
+}
+
+.center-middle {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
