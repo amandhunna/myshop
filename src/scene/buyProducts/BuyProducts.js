@@ -54,7 +54,7 @@ const BuyProducts = () => {
                 </Col>
             </Row>
             <Row>
-                <Col className="side-border d-none" md={showCart ? 9 : 12}>
+                <Col className="side-border" md={showCart ? 9 : 12}>
                     <strong className="d-flex justify-content-center  mb-3">Products List</strong>
                     <Row className="buyPage-list">
                         <ProductsList colSize={showCart ? 4 : 3} />
