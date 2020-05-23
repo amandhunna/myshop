@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Row, Col } from "react-bootstrap";
+import { Form, Row, Col, Container } from "react-bootstrap";
 import ProductCard from "../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
 import "./css.css";
@@ -24,14 +24,14 @@ const CartList = () => {
 const BuyProducts = () => {
     const [showCart, setShowCart] = useState(false);
     return (
-        <>
-            <Row className="filterBar">
-                <Col md={1} className="font-size-30 center-middle">
-                    <span>
+        <Container fluid>
+            <Row className="align-items-center">
+                <Col xs={1} >
+                    <span className="font-size-30 center-middle">
                         <i className="fa fa-filter"></i>
                     </span>
                 </Col>
-                <Col md={10}>
+                <Col xs={10} className="">
                     <Form.Label className=""></Form.Label>
                     <Form className="w-100">
                         <Form.Group controlId="selectShop" >
@@ -46,14 +46,15 @@ const BuyProducts = () => {
                         </Form.Group>
                     </Form>
                 </Col>
-                <Col md={1} className="font-size-30 center-middle">
-                    <span onClick={() => setShowCart(prev => !prev)}>
+                <Col xs={1} >
+                    <span className="font-size-30 center-middle"
+                        onClick={() => setShowCart(prev => !prev)}>
                         <i class="fa fa-shopping-cart"></i>
                     </span>
                 </Col>
             </Row>
             <Row>
-                <Col className="side-border" md={showCart ? 9 : 12}>
+                <Col className="side-border d-none" md={showCart ? 9 : 12}>
                     <strong className="d-flex justify-content-center  mb-3">Products List</strong>
                     <Row className="buyPage-list">
                         <ProductsList colSize={showCart ? 4 : 3} />
@@ -66,7 +67,7 @@ const BuyProducts = () => {
                     </Row>
                 </Col>
             </Row>
-        </>
+        </Container>
 
     )
 }

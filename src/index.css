@@ -22,3 +22,18 @@ body {
 .example {
   -ms-overflow-style: none;
 }
+
+
+.font-size-30 {
+  font-size: 30px;
+}
+
+.center-middle {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.width-auto {
+  /*  width: auto; */
+ }

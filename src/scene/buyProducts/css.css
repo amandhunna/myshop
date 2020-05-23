@@ -8,11 +8,10 @@ strong.d-flex.justify-content-center {
   border-width: 1px 0;
 }
 
-.filterBar {
-  display: flex;
-  align-items: center;
-  margin: 0;
+.filterBar{
+  flex-wrap: inherit;
 }
+
 .buyPage-list {
   overflow: scroll;
   height: 80vh;
