@@ -82,7 +82,7 @@ nav#sideBar {
   top: 0;
   height: 100%;
   left: -300px;
-  z-index:9;
+  z-index: 9;
 }
 nav#sideBar.active {
   /* padding: 4px; */
@@ -104,5 +104,6 @@ nav#sideBar.active {
     background: none;
     color: black;
     position: relative;
+    left: 0;
   }
 }

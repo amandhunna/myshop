@@ -1,5 +1,5 @@
 .side-border {
-  border: 1px solid tomato;
+  /*  border: 1px solid tomato; */
   border-width: 0px 1px 0px 1px;
 }
 
@@ -8,11 +8,21 @@ strong.d-flex.justify-content-center {
   border-width: 1px 0;
 }
 
-.filterBar{
+.filterBar {
   flex-wrap: inherit;
 }
 
 .buyPage-list {
   overflow: scroll;
   height: 80vh;
+}
+.side-border {
+  /*  border: 1px solid tomato; */
+  border-width: 0px 1px 0px 1px;
+}
+@media screen and (min-width: 768px) {
+  .side-border {
+    border: 1px solid tomato;
+    border-width: 0px 1px 0px 1px;
+  }
 }
