@@ -23,7 +23,6 @@ body {
   -ms-overflow-style: none;
 }
 
-
 .font-size-30 {
   font-size: 30px;
 }
@@ -33,7 +32,12 @@ body {
   align-items: center;
   display: flex;
 }
-
-.width-auto {
-  /*  width: auto; */
- }
+.active-blue {
+  color: darkblue;
+}
+.p-relative {
+  position: relative;
+}
+.p-absolute {
+  position: absolute;
+}

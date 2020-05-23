@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputGroup, Card, Row, Col, FormControl, Button, Image, Container } from "react-bootstrap"
+import { InputGroup, Card, Row, Col, FormControl, Button } from "react-bootstrap"
 import ProductCard from "../../lib/components/productCard"
 import "./addProducts.css";
 
