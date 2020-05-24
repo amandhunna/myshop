@@ -15,8 +15,8 @@ export default function Header(props) {
         <header className="w-100 center-middle">
             <Col xs={2}>
                 <span className="humburger"
-                    onClick={(prev) => {
-                        const newValue = prev === "active" ? "inactive" : "active"
+                    onClick={() => {
+                        const newValue = active === "active" ? "inactive" : "active";
                         setActive(newValue)
                     }}><i></i></span>
             </Col>
