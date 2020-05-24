@@ -13,20 +13,21 @@ export default function Header(props) {
 
     return (
         <header className="w-100 center-middle">
-            <Col xs={2}>
+            <Col xs={2} md={1}>
                 <span className="humburger"
                     onClick={() => {
                         const newValue = active === "active" ? "inactive" : "active";
                         setActive(newValue)
                     }}><i></i></span>
             </Col>
-            <Col xs={1} className="d-none" >
-                <span className={`font-size-30 center-middle`}>
-                    <i className="fa fa-filter"></i>
-                </span>
-            </Col>
-            <Col xs={9} className="">
+            <Col xs={6} md={9} className="">
                 <Search />
+            </Col>
+            <Col xs={2} md={1} className="center-middle" >
+                <span className={`font-size-30 center-middle`}>
+                    {/*  <i className="fa fa-filter"></i> */}
+                    <i class="fa fa-store-alt"></i>
+                </span>
             </Col>
             <Col xs={1} >
                 <span className={`font-size-30 center-middle p-relative
