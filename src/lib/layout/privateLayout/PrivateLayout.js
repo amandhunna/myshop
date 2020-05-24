@@ -21,17 +21,18 @@ const PrivateLayout = (props) => {
         active, setActive
     }
     const { component: Component, route } = props
+    const lg = active === "active"
     return (
         <Container fluid>
             <Row>
                 <Header {...searchBarProps} />
             </Row>
             <Row>
-                <Col className="p-0 m-0" md={2}>
+                <Col className="p-0 m-0" md={lg ? 2 : 1}>
                     <Nav {...navProps} />
                 </Col>
-                <Col md={10}>
-                    <Component route={route} />
+                <Col md={lg ? 10 : 11}>
+                    <Component route={route} {...searchBarProps} />
                 </Col>
             </Row>
         </Container>

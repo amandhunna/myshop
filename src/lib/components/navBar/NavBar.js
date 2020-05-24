@@ -5,14 +5,23 @@ import "./css.css";
 
 export default function NavBar(props) {
     const { active, setActive } = props;
+    console.log("--------", active)
+    const lg = active === "active"
     return (
         <nav id="sideBar" className={`d-none d-flex flex-sm-column w-md-100 ${active}`} onClick={() => setActive("inactive")}>
-            <Link to="/"> Saada Bazar</Link>
-            <Link className="secondary" to="/orders">Orders</Link>
-            <Link className="secondary" to="/info" >Info</Link>
-            <Link className="secondary" to="/addProducts" >Add Products</Link>
-            <Link className="secondary" to="/buyProducts" >Buy Products</Link>
-            <div class="g-signIn d-md-none m-3"><GoogleLogin /></div>
+
+            <Link className="secondary" to="/">
+                <i class="fa fa-home"></i>{lg && "Home"}</Link>
+            <Link className="secondary" to="/orders">
+                {/* <i class="fa fa-cart-plus"></i> */}
+                <i class="fa fa-truck"></i>{lg && "Orders"}</Link>
+            <Link className="secondary" to="/info" > <i class="fa fa-address-card"></i>{lg && "Info"}</Link>
+            <Link className="secondary" to="/addProducts" >
+                <i class="fa fa-upload">{/* <i class="fa fa-product-hunt"></i> */}</i>
+                {/*     <i class="fas fa-dolly-flatbed"></i> */}
+                {lg && "Add Products"}</Link>
+            <Link className="secondary" to="/buyProducts" > <i class="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>
+            <div class="g-signIn m-3 d-none"><GoogleLogin /></div>
         </nav>
     )
 }

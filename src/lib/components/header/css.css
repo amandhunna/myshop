@@ -22,34 +22,6 @@ header {
   color: white;
 }
 
-nav > a {
-  color: white;
-  padding: 1rem;
-  font-size: 20px;
-}
-a:hover {
-  color: white;
-  text-decoration: none;
-}
-
-.active > a {
-  margin-left: 10px;
-}
-.secondary {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-}
-
-.googleLogin {
-  background-color: indianred !important;
-  color: white !important;
-  border-radius: 10px !important;
-}
-.googleLogin * {
-  border-radius: 10px !important;
-}
 /* https://medium.com/@hollybourneville/creating-border-lines-using-pseudo-elements-in-css-a460396299e8 */
 
 span.humburger {
