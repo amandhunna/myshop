@@ -23,6 +23,12 @@ export default function NavBar(props) {
                 <i className="fa fa-truck"></i>{lg && "Orders"}</Link>
             <Link className="secondary" to="/info" > <i className="fa fa-address-card"></i>{lg && "Info"}</Link>
 
+            <Link className="secondary" to="/cart" > 
+            <i class="fa fa-shopping-cart p-relative"></i>
+            {lg && "Cart"}
+            </Link>
+
+
 
             <div className="g-signIn m-3 d-none"><GoogleLogin /></div>
         </nav>

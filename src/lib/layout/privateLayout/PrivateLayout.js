@@ -21,14 +21,17 @@ const PrivateLayout = (props) => {
     const navProps = {
         active, setActive
     }
-    const { component: Component, route, title } = props
+    const { component: Component, route, title, header } = props
     const lg = active === "active"
     return (
         <Container fluid>
             <Row>
-                <Header {...searchBarProps} />
+                <Header {...searchBarProps} header={header} />
             </Row>
-            <Row className="main">
+            <Row className="main"     onClick={() => {
+                        const newValue = active === "active" ? "inactive" : "active";
+                        setActive("inactive")
+                    }}>
                 <Col className="p-0 m-0" md={lg ? 2 : 1}>
                     <Nav {...navProps} />
                 </Col>

@@ -18,7 +18,8 @@ const routes = [
     }, {
         path: '/buyProducts',
         title: 'Buy products',
-        component: BuyProducts
+        component: BuyProducts,
+        header: ["cart"],
     },
     {
         path: '/orders',

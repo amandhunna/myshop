@@ -14,17 +14,6 @@ const AddProducts = () => {
     return (
         <div className="container">
             <Row>
-                <Col lg={8}>
-
-                    <InputGroup className="my-3">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="Search"
-                            aria-label="Search"
-                        />
-                    </InputGroup></Col>
                 <Col lg={4}>
                     <InputGroup className="my-3">
                         <InputGroup.Prepend>
