@@ -27,8 +27,12 @@ const PrivateLayout = (props) => {
                 <Header {...searchBarProps} />
             </Row>
             <Row>
-                <Nav {...navProps} />
-                <Component route={route} />
+                <Col className="p-0 m-0" md={2}>
+                    <Nav {...navProps} />
+                </Col>
+                <Col md={10}>
+                    <Component route={route} />
+                </Col>
             </Row>
         </Container>
     )

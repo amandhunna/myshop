@@ -2,7 +2,7 @@
 nav#sideBar {
     display: flex !important;
     flex-direction: column;
-    background: #cd5c5cf2;
+    background: #343a40 !important;
     color: black;
     transition: all 0.3s ease-in-out;
     position: fixed;
@@ -30,12 +30,11 @@ nav#sideBar {
       z-index: 1;
     }
     nav#sideBar {
+      color: black;
       display: flex !important;
       flex-direction: row;
-      background: none;
-      color: black;
-      position: relative;
       left: 0;
+      position: relative;
     }
   }
   

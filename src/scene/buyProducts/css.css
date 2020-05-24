@@ -21,22 +21,6 @@ strong {
   border-width: 0px 1px 0px 1px;
 }
 
-i.cartOrders {
-  pointer-events: none;
-  position: absolute;
-  background: rosybrown;
-  top: -16px;
-  right: -2px;
-  font-size: 20px;
-  padding: 4px;
-  border-radius: 25px 25px 25px 25px;
-  height: 30px;
-  width: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: -9;
-}
 
 @media screen and (min-width: 768px) {
   .side-border {

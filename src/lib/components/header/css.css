@@ -12,7 +12,8 @@ i.cartOrders {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: -1;
+  transform: rotate(-40deg);
 }
 
 header {
@@ -21,14 +22,7 @@ header {
   color: white;
 }
 
-.homeLink {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-nav > a,
-.homeLink > a {
+nav > a {
   color: white;
   padding: 1rem;
   font-size: 20px;

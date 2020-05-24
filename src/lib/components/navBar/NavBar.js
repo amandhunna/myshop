@@ -6,10 +6,8 @@ import "./css.css";
 export default function NavBar(props) {
     const { active, setActive } = props;
     return (
-        <nav id="sideBar" className={`d-none d-md-flex ${active}`}>
-            <span className="homeLink">
-                <Link to="/"> Saada Bazar</Link>
-                <i className="d-md-none" onClick={() => setActive("inactive")}><i class="fa fa-times"></i></i></span>
+        <nav id="sideBar" className={`d-none d-flex flex-sm-column w-md-100 ${active}`} onClick={() => setActive("inactive")}>
+            <Link to="/"> Saada Bazar</Link>
             <Link className="secondary" to="/orders">Orders</Link>
             <Link className="secondary" to="/info" >Info</Link>
             <Link className="secondary" to="/addProducts" >Add Products</Link>
