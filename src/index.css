@@ -11,6 +11,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -38,4 +39,7 @@ body {
 }
 .p-absolute {
   position: absolute;
+}
+.w-fit-content{
+  width: fit-content
 }

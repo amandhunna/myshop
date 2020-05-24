@@ -7,20 +7,26 @@ import BuyProducts from './scene/buyProducts';
 const routes = [
     {
         path: '/',
+        title: 'Home',
         component: Intro
+
     },
     {
         path: '/info',
+        title: 'User info',
         component: Info
     }, {
         path: '/buyProducts',
+        title: 'Buy products',
         component: BuyProducts
     },
     {
         path: '/orders',
+        title: 'Orders',
         component: Order
     }, {
         path: '/addProducts',
+        title: 'Upload/Review products',
         component: AddProducts
     },
 ]

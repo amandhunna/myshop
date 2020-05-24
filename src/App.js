@@ -18,7 +18,7 @@ function App() {
       {/* <div class="g-signIn d-none d-md-block"><GoogleLogin /></div> */}
       <Switch>
         {routes.map((route, key) => {
-          const { component, path } = route;
+          const { component, path, title } = route;
           return (
             <Route
               exact
@@ -26,8 +26,9 @@ function App() {
               key={key}
               render={(route) =>
                 <PrivateLayout
-                  component={component}
                   route={route}
+                  component={component}
+                  title={title}
                 />
               }
             />

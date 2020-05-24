@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { Row, Col, Container } from "react-bootstrap";
 import ProductCard from "../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
+import baseHelper from "../../lib/helper/base";
 import "./css.css";
+
+const { randomKey } = baseHelper;
 
 const ProductsList = (props) => {
     const { colSize } = props;
     const data = [...dummyProducts];
-    return data.map(item => <ProductCard colSize={colSize} btnType="singleBtn" />)
+    return data.map(item => <ProductCard key={randomKey("productList")} colSize={colSize} btnType="singleBtn" />)
 }
 
 const CartList = () => {
@@ -17,6 +20,7 @@ const CartList = () => {
         btnType="dangerPrimary"
         primaryBtnText="Add + 1"
         dangerBtnText="Remove -1"
+        key={randomKey("productCart")}
     />)
 }
 
