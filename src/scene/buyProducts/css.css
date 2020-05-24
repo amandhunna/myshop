@@ -3,7 +3,7 @@
   border-width: 0px 1px 0px 1px;
 }
 
-strong.d-flex.justify-content-center {
+strong {
   border: 1px solid tomato;
   border-width: 1px 0;
 }

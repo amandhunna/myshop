@@ -13,7 +13,7 @@ import Order from "./scene/order";
 import Info from "./scene/info";
 import Intro from "./scene/intro"
 import BuyProducts from './scene/buyProducts';
-import GoogleLogin from "./lib/components/GoogleLogin";
+import GoogleLogin from "./lib/components/googleLogin";
 
 
 function App() {
@@ -22,7 +22,9 @@ function App() {
 
     <Router>
       <header className="d-flex justify-content-between align-items-center">
+        
         <span className="humburger d-md-none" onClick={() => setActive("active")}><i></i></span>
+
         <nav id="sideBar" className={`d-none d-md-flex ${active}`}>
           <span className="homeLink">
             <Link to="/"> Saada Bazar</Link>
@@ -31,8 +33,9 @@ function App() {
           <Link className="secondary" to="/info" >Info</Link>
           <Link className="secondary" to="/addProducts" >Add Products</Link>
           <Link className="secondary" to="/buyProducts" >Buy Products</Link>
+          <div class="g-signIn d-md-none m-3"><GoogleLogin /></div>
         </nav>
-        <div class="g-signIn"><GoogleLogin /></div>
+        <div class="g-signIn d-none d-md-block"><GoogleLogin /></div>
       </header>
       <Switch>
         <Route path="/info" component={Info} />

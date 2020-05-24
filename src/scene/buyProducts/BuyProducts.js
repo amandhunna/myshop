@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Form, Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import ProductCard from "../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
 import "./css.css";
+import Search from '../../lib/components/search';
 
 const ProductsList = (props) => {
     const { colSize } = props;
@@ -33,26 +34,14 @@ const BuyProducts = () => {
                     </span>
                 </Col>
                 <Col xs={10} className="">
-                    <Form.Label className=""></Form.Label>
-                    <Form className="w-100">
-                        <Form.Group controlId="selectShop" >
-                            <Form.Control as="select" custom>
-                                <option checked>Select Shops near you</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Form>
+                    <Search />
                 </Col>
                 <Col xs={1} >
                     <span className={`font-size-30 center-middle p-relative
                     ${showCart && "active-blue"}`}
                         onClick={() => setShowCart(prev => !prev)}>
                         <i class="fa fa-shopping-cart p-relative">
-                        <i className="cartOrders">{cartOrders}</i>
+                            <i className="cartOrders">{cartOrders}</i>
                         </i>
                     </span>
                 </Col>
@@ -60,7 +49,7 @@ const BuyProducts = () => {
             <Row>
                 <Col className="side-border" md={showCart ? 9 : 12}
                     xs={showCart ? 0 : 12}>
-                    <strong className="d-flex justify-content-center  mb-3">Products List</strong>
+                    <strong className="d-flex mb-3">Products List</strong>
                     <Row className="buyPage-list">
                         <ProductsList colSize={showCart ? 4 : 3} />
                     </Row>

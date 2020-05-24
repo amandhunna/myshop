@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, Card } from "react-bootstrap";
-import AcceptModal from "../../lib/components/AcceptModal";
-import RejectedModal from "../../lib/components/RejectedModal";
+import AcceptModal from "../../lib/components/acceptModal";
+import RejectedModal from "../../lib/components/rejectedModal";
 import data from "./dummy";
 //import Navbar from "../../lib/components/NavBar";
 import "./order.css";
