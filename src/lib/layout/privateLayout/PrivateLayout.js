@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Header from "../../components/searchBar";
-import Nav from "../../components/NavBar";
+import Header from "../../components/header";
+import Nav from "../../components/navBar/NavBar";
 import { Container, Row, Col } from 'react-bootstrap';
 
 const PrivateLayout = (props) => {

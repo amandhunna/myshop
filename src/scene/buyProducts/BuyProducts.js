@@ -3,7 +3,6 @@ import { Row, Col, Container } from "react-bootstrap";
 import ProductCard from "../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
 import "./css.css";
-import SearchBar from '../../lib/components/searchBar';
 
 const ProductsList = (props) => {
     const { colSize } = props;
@@ -22,19 +21,11 @@ const CartList = () => {
 }
 
 
-const BuyProducts = () => {
-    const [showCart, setShowCart] = useState(true);
-    const [cartOrders, setCartOrders] = useState(0);
-
-    const searchBarProps = {
-        cartOrders,
-        setShowCart,
-        showCart,
-    }
+const BuyProducts = (props) => {
+    const { showCart } = props;
 
     return (
         <Container fluid>
-          {/*   <SearchBar {...searchBarProps} /> */}
             <Row>
                 <Col className="side-border" md={showCart ? 9 : 12}
                     xs={showCart ? 0 : 12}>

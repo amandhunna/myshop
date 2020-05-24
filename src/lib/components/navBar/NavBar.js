@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import GoogleLogin from "./googleLogin";
+import GoogleLogin from "../googleLogin";
+import "./css.css";
 
 export default function NavBar(props) {
     const { active, setActive } = props;
@@ -17,3 +18,5 @@ export default function NavBar(props) {
         </nav>
     )
 }
+
+//#343a40 !important

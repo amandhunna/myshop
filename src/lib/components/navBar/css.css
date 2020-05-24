@@ -1,0 +1,41 @@
+
+nav#sideBar {
+    display: flex !important;
+    flex-direction: column;
+    background: #cd5c5cf2;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    left: -300px;
+    z-index: 9;
+  }
+  nav#sideBar.active {
+    /* padding: 4px; */
+    max-width: 300px;
+    z-index: 99;
+    /* width: 100%; */
+    left: 0;
+  }
+  
+  .active-cart {
+      color: indianred;
+    }
+  
+  @media screen and (min-width: 768px) {
+    .active {
+      padding: 0px;
+      width: auto;
+      z-index: 1;
+    }
+    nav#sideBar {
+      display: flex !important;
+      flex-direction: row;
+      background: none;
+      color: black;
+      position: relative;
+      left: 0;
+    }
+  }
+  

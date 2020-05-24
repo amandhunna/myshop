@@ -32,9 +32,7 @@ body {
   align-items: center;
   display: flex;
 }
-.active-blue {
-  color: darkblue;
-}
+
 .p-relative {
   position: relative;
 }
