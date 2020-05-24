@@ -3,7 +3,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import ProductCard from "../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
 import "./css.css";
-import Search from '../../lib/components/search';
+import SearchBar from '../../lib/components/searchBar';
 
 const ProductsList = (props) => {
     const { colSize } = props;
@@ -25,27 +25,16 @@ const CartList = () => {
 const BuyProducts = () => {
     const [showCart, setShowCart] = useState(true);
     const [cartOrders, setCartOrders] = useState(0);
+
+    const searchBarProps = {
+        cartOrders,
+        setShowCart,
+        showCart,
+    }
+
     return (
         <Container fluid>
-            <Row className="align-items-center">
-                <Col xs={1} >
-                    <span className={`font-size-30 center-middle`}>
-                        <i className="fa fa-filter"></i>
-                    </span>
-                </Col>
-                <Col xs={10} className="">
-                    <Search />
-                </Col>
-                <Col xs={1} >
-                    <span className={`font-size-30 center-middle p-relative
-                    ${showCart && "active-blue"}`}
-                        onClick={() => setShowCart(prev => !prev)}>
-                        <i class="fa fa-shopping-cart p-relative">
-                            <i className="cartOrders">{cartOrders}</i>
-                        </i>
-                    </span>
-                </Col>
-            </Row>
+          {/*   <SearchBar {...searchBarProps} /> */}
             <Row>
                 <Col className="side-border" md={showCart ? 9 : 12}
                     xs={showCart ? 0 : 12}>

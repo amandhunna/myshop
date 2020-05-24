@@ -1,19 +1,19 @@
 import React from 'react'
-import { Navbar, Nav } from "react-bootstrap";
-export default function NavBar() {
-    return (
-        <div>
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="/">Saada Bazar</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link href="/info">Info</Nav.Link>
-                </Nav>
-                {/* <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
-                </Form>
- */}            </Navbar>
+import { Link } from "react-router-dom";
+import GoogleLogin from "./googleLogin";
 
-        </div>
+export default function NavBar(props) {
+    const { active, setActive } = props;
+    return (
+        <nav id="sideBar" className={`d-none d-md-flex ${active}`}>
+            <span className="homeLink">
+                <Link to="/"> Saada Bazar</Link>
+                <i className="d-md-none" onClick={() => setActive("inactive")}><i class="fa fa-times"></i></i></span>
+            <Link className="secondary" to="/orders">Orders</Link>
+            <Link className="secondary" to="/info" >Info</Link>
+            <Link className="secondary" to="/addProducts" >Add Products</Link>
+            <Link className="secondary" to="/buyProducts" >Buy Products</Link>
+            <div class="g-signIn d-md-none m-3"><GoogleLogin /></div>
+        </nav>
     )
 }

@@ -1,11 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-links: 
-css
-- https://hackerthemes.com/bootstrap-cheatsheet/#flex-wrap
+links:
+
+- bootstrap: https://hackerthemes.com/bootstrap-cheatsheet/#flex-wrap
 - https://picsum.photos/
-- https://www.bootstrapcdn.com/fontawesome/
-- https://fontawesome.com/v4.7.0/icon/search
+- fontawesome css: https://www.bootstrapcdn.com/fontawesome/
+- fontawesome icon: https://fontawesome.com/v4.7.0/icon/search
+- layout: https://medium.com/@albertcito/different-layouts-with-react-router-1311a21a2df5
+
 ## Available Scripts
 
 In the project directory, you can run:
