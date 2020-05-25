@@ -18,7 +18,7 @@ function App() {
       {/* <div class="g-signIn d-none d-md-block"><GoogleLogin /></div> */}
       <Switch>
         {routes.map((route, key) => {
-          const { component, path, titleComponents, header } = route;
+          const { component, path, titleComponents, header, unScrollable } = route;
           return (
             <Route
               exact
@@ -30,6 +30,7 @@ function App() {
                   component={component}
                   titleComponents={titleComponents}
                   header={header}
+                  unScrollable={unScrollable}
                 />
               }
             />

@@ -1,5 +1,6 @@
 import React from 'react'
 import UploadProduct from "../uploadProduct";
+import Cart from "../cart";
 import "./css.css";
 
 const GetTitleComponent = ({ titleComponents = {} }) => {
@@ -8,6 +9,7 @@ const GetTitleComponent = ({ titleComponents = {} }) => {
     component.forEach(element => {
         if (element === "uploadProduct")
             componentStack.push(<UploadProduct />)
+        if (element === "cart") componentStack.push(<Cart />)
     });
 
     return componentStack;

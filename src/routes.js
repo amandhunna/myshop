@@ -9,7 +9,6 @@ const routes = [
         path: '/',
         titleComponents: { title: 'Home', component: [] },
         component: Intro
-
     },
     {
         path: '/info',
@@ -17,9 +16,10 @@ const routes = [
         component: Info
     }, {
         path: '/buyProducts',
-        titleComponents: { title: 'Buy products', component: [] },
+        titleComponents: { title: 'Buy products', component: ["cart"] },
         component: BuyProducts,
         header: ["cart"],
+        unScrollable: true,
     },
     {
         path: '/orders',

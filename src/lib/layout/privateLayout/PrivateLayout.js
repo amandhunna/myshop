@@ -28,7 +28,8 @@ const PrivateLayout = (props) => {
         component: Component,
         header,
         route,
-        titleComponents
+        titleComponents,
+        unScrollable
     } = props
     const lg = active === "active"
     return (
@@ -44,7 +45,7 @@ const PrivateLayout = (props) => {
                     <div className="titleComponents">
                         <GetTitleComponent titleComponents={titleComponents} />
                     </div>
-                    <div className="scroll-able">
+                    <div className={!unScrollable && "scroll-able"}>
                         <Component route={route} {...searchBarProps} />
                     </div>
                 </Col>
