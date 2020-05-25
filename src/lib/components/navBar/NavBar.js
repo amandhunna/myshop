@@ -24,7 +24,7 @@ export default function NavBar(props) {
             <Link className="secondary" to="/info" > <i className="fa fa-address-card"></i>{lg && "Info"}</Link>
 
             <Link className="secondary" to="/cart" > 
-            <i class="fa fa-shopping-cart p-relative"></i>
+            <i className="fa fa-shopping-cart p-relative"></i>
             {lg && "Cart"}
             </Link>
 

@@ -31,7 +31,7 @@ export default function Header(props) {
 
             <Col xs={2} className="center-middle d-md-none" >
                 <span className={`font-size-30 center-middle ${toggle ? "active-store" : ""}`} onClick={() => setToggle(prev => !prev)}>
-                    <i class="fa fa-store-alt"></i>
+                    <i className="fa fa-store-alt"></i>
                 </span>
             </Col>
 

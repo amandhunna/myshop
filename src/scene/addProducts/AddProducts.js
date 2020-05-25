@@ -1,13 +1,16 @@
 import React from 'react';
 import { InputGroup, Card, Row, Col, FormControl, Button } from "react-bootstrap"
 import ProductCard from "../../lib/components/productCard"
+import baseHelper from "../../lib/helper/base";
 import "./addProducts.css";
+
+const { randomKey } = baseHelper;
 
 const AddProducts = () => {
     const getProductsList = () => {
         const data = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
-        return data.map(item => <ProductCard btnType="dangerPrimary" />)
+        return data.map(item => <ProductCard key={randomKey("addProducts")} btnType="dangerPrimary" />)
 
     }
 
