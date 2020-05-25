@@ -6,7 +6,7 @@ import "./pri.css";
 
 const PrivateLayout = (props) => {
     const [active, setActive] = useState("inactive");
-    const [showCart, setShowCart] = useState(false);
+    const [showCart, setShowCart] = useState(true);
     const [cartOrders, setCartOrders] = useState(0);
 
     const searchBarProps = {

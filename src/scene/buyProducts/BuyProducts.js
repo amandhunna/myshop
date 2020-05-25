@@ -26,20 +26,17 @@ const CartList = () => {
 
 
 const BuyProducts = (props) => {
-    const { showCart } = props;
-
+    const { showCart = true } = props;
     return (
         <Container fluid>
             <Row>
-                <Col className="side-border" md={showCart ? 9 : 12}
-                    xs={showCart ? 0 : 12}>
-                    <strong className="d-flex mb-3">Products List</strong>
-                    <Row className="buyPage-list">
+                <Col md={showCart ? 9 : 12}
+                    xs={12}>
+                    <Row>
                         <ProductsList colSize={showCart ? 4 : 3} />
                     </Row>
                 </Col>
-                <Col md={showCart ? 3 : 0} xs={showCart ? 12 : 0} className={!showCart && "d-none"}>
-                    <strong className="d-flex justify-content-center  mb-3">Your cart</strong>
+                <Col md={showCart ? 3 : 0} className="d-none d-md-block">
                     <Row className="buyPage-list">
                         <CartList />
                     </Row>

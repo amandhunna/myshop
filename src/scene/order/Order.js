@@ -3,7 +3,6 @@ import { Button, Row, Col, Card } from "react-bootstrap";
 import AcceptModal from "../../lib/components/acceptModal";
 import RejectedModal from "../../lib/components/rejectedModal";
 import data from "./dummy";
-//import Navbar from "../../lib/components/NavBar";
 import "./order.css";
 
 
@@ -49,7 +48,7 @@ const GetCards = props => {
     }, [])
     let count = 0;
     const cardsDOm = <Row>
-        {cards.map((cardData) => <Col className="mt-3" sm={12} md={6} lg={4} ><GetCard customer={cardData} cardNumber={++count} {...props} /></Col>)}
+        {cards.map((cardData) => <Col className="mt-3" sm={12} md={4} lg={3} ><GetCard customer={cardData} cardNumber={++count} {...props} /></Col>)}
     </Row>
 
     return cardsDOm
@@ -67,12 +66,11 @@ const Order = (props) => {
     }
 
     return (
-        <div className="container d-flex flex-column justify-content-center  align-self-center">
-            <h1 className="d-flex flex-column justify-content-center  align-self-center">Orders</h1>
+        <Col className="container d-flex flex-column justify-content-center  align-self-center">
             <GetCards {...getCardsProps} />
             <AcceptModal show={modalShow} modalItems={modalItems} onHide={() => setModalShow(false)} />
             <RejectedModal show={rejectedModalShow} onHide={() => setRejectedModalShow(false)} />
-        </div >
+        </Col >
 
     )
 }
