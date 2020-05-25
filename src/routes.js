@@ -3,7 +3,7 @@ import Order from "./scene/order";
 import Info from "./scene/info";
 import Intro from "./scene/intro"
 import BuyProducts from './scene/buyProducts';
-
+import Page404 from "./scene/page404";
 const routes = [
     {
         path: '/',
@@ -30,6 +30,12 @@ const routes = [
         title: 'Upload/Review products',
         component: AddProducts
     },
+    {
+        path: '*' ,
+        title: 'Page not found',
+        component: Page404
+
+    }
 ]
 
 export default routes
