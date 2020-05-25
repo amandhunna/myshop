@@ -1,4 +1,11 @@
+.titleComponents {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0 5px 0;
+}
+
 .scroll-able {
-    height: 85vh;
-    overflow: scroll;
+  height: 85vh;
+  overflow: scroll;
 }

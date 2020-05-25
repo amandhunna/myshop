@@ -7,32 +7,32 @@ import Page404 from "./scene/page404";
 const routes = [
     {
         path: '/',
-        title: 'Home',
+        titleComponents: { title: 'Home', component: [] },
         component: Intro
 
     },
     {
         path: '/info',
-        title: 'User info',
+        titleComponents: { title: 'User info', component: [] },
         component: Info
     }, {
         path: '/buyProducts',
-        title: 'Buy products',
+        titleComponents: { title: 'Buy products', component: [] },
         component: BuyProducts,
         header: ["cart"],
     },
     {
         path: '/orders',
-        title: 'Orders',
+        titleComponents: { title: 'Orders', component: [] },
         component: Order
     }, {
         path: '/addProducts',
-        title: 'Upload/Review products',
+        titleComponents: { title: 'Edit products', component: ["uploadProduct"] },
         component: AddProducts
     },
     {
-        path: '*' ,
-        title: 'Page not found',
+        path: '*',
+        titleComponents: { title: 'Page not found', component: [] },
         component: Page404
 
     }

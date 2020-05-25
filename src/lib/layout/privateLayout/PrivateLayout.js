@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import Header from "../../components/header";
 import Nav from "../../components/navBar/NavBar";
 import { Container, Row, Col } from 'react-bootstrap';
+import GetTitleComponent from "../../components/getTitleComponent"
 import "./pri.css";
+
+
 
 const PrivateLayout = (props) => {
     const [active, setActive] = useState("inactive");
@@ -21,7 +24,12 @@ const PrivateLayout = (props) => {
     const navProps = {
         active, setActive
     }
-    const { component: Component, route, title, header } = props
+    const {
+        component: Component,
+        header,
+        route,
+        titleComponents
+    } = props
     const lg = active === "active"
     return (
         <Container fluid>
@@ -33,7 +41,9 @@ const PrivateLayout = (props) => {
                     <Nav {...navProps} />
                 </Col>
                 <Col md={lg ? 10 : 11}>
-                    <h3>{title}</h3>
+                    <div className="titleComponents">
+                        <GetTitleComponent titleComponents={titleComponents} />
+                    </div>
                     <div className="scroll-able">
                         <Component route={route} {...searchBarProps} />
                     </div>
