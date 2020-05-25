@@ -4,7 +4,7 @@ import "./css.css";
 export default function Cart(props) {
     const { cartOrders = 100, showCart = false, setShowCart } = props;
     return (
-        <div>
+        <div className="d-none d-md-block">
             <span className={`font-size-30 center-middle p-relative
                        ${ showCart && "active-cart"} `}
                 onClick={() => setShowCart(prev => !prev)}>
