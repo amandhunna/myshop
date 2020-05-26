@@ -52,6 +52,7 @@ span.humburger::after {
 span.humburger::after {
   top: auto;
   bottom: 0;
+  width: 75%;
 }
 
 .active-store {

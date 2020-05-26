@@ -18,26 +18,26 @@ const CartList = () => {
     return data.map(item => <ProductCard
         colSize={12}
         btnType="dangerPrimary"
-        primaryBtnText="Add + 1"
-        dangerBtnText="Remove -1"
+        primaryBtnText="Add 1"
+        dangerBtnText="Remove 1"
         key={randomKey("productCart")}
     />)
 }
 
 
 const BuyProducts = (props) => {
-    const { showCart = true } = props;
+    const { showCart = false } = props;
     return (
         <Container fluid>
             <Row>
                 <Col md={showCart ? 9 : 12}
                     xs={12}>
-                    <Row>
+                    <Row className="scroll-able">
                         <ProductsList colSize={showCart ? 4 : 3} />
                     </Row>
                 </Col>
                 <Col md={showCart ? 3 : 0} className="d-none d-md-block">
-                    <Row className="buyPage-list">
+                    <Row className="buyPage-list scroll-able">
                         <CartList />
                     </Row>
                 </Col>
