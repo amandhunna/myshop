@@ -1,3 +1,4 @@
+/* eslint-disable no-unreachable */
 import React, { useState } from "react";
 import { Row, Col, Form } from "react-bootstrap";
 import InfoForm from "./InfoForm";
@@ -5,6 +6,7 @@ import "./info.css";
 
 const Info = props => {
   const [isSeller, setIsSeller] = useState(false);
+  return <div>Coming Soon...</div>
   return (<>
     <section className="container infoPage">
       <Col className="position-relative rounded  p-4 p-lg-5">
