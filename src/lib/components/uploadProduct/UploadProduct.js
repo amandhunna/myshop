@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import "./css.css";
 
 export default function UploadProduct() {
-    return (<Button variant="primary">Upload Product</Button>)
+    return (<Button className="uploadProduct" variant="primary"></Button>)
     /* return (
         <InputGroup className="my-3">
             <InputGroup.Prepend>

@@ -14,9 +14,10 @@ export default function NavBar(props) {
             <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>
 
             <Link className="secondary" to="/addProducts" >
-                <i className="fa fa-upload">{/* <i class="fa fa-product-hunt"></i> */}</i>
-                {/*     <i class="fas fa-dolly-flatbed"></i> */}
-                {lg && "Add Products"}</Link>
+            <i class="fas fa-edit"></i>
+                {/* <i className="fa fa-upload"> </i>*/}
+                {/* <i class="fa fa-product-hunt"></i> */}                {/*     <i class="fas fa-dolly-flatbed"></i> */}
+                {lg && "Edit Products"}</Link>
 
             <Link className="secondary" to="/orders">
                 {/* <i class="fa fa-cart-plus"></i> */}

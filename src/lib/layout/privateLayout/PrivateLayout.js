@@ -37,13 +37,13 @@ const PrivateLayout = (props) => {
             <Row>
                 <Header {...searchBarProps} header={header} />
             </Row>
-            <Row onClick={() => { setActive("inactive") }}>
+            <Row className="mainLayout" onClick={() => { setActive("inactive") }}>
                 <Col className="p-0 m-0" md={lg ? 2 : 1}>
                     <Nav {...navProps} />
                 </Col>
                 <Col md={lg ? 10 : 11}>
                     <div className="titleComponents">
-                        <GetTitleComponent titleComponents={titleComponents} />
+                        <GetTitleComponent titleComponents={titleComponents} {...searchBarProps} />
                     </div>
                     <div className={!unScrollable && "scroll-able"}>
                         <Component route={route} {...searchBarProps} />

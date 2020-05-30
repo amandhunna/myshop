@@ -9,3 +9,6 @@
   height: 85vh;
   overflow: scroll;
 }
+.mainLayout {
+  background-color: #000;
+}
