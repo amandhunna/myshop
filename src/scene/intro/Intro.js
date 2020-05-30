@@ -1,7 +1,9 @@
+/* eslint-disable no-unreachable */
 import React from 'react'
 
 export default function Intro() {
-    return (
+    return <div> Coming Soon...</div>
+    if (false) return (
         <div className="m-5">
             <ul>
                 <li>Through this app, I have tried to bring local shops on the web</li>
