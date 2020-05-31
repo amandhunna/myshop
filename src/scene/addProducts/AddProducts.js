@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row } from "react-bootstrap"
+import { Row, Container } from "react-bootstrap"
 import ProductCard from "../../lib/components/productCard"
 import baseHelper from "../../lib/helper/base";
 import "./addProducts.css";
@@ -15,9 +15,11 @@ const AddProducts = () => {
     }
 
     return (
-        <Row>
-            {getProductsList()}
-        </Row>
+        <Container fluid>
+            <Row>
+                {getProductsList()}
+            </Row>
+        </Container>
     )
 }
 export default AddProducts;
