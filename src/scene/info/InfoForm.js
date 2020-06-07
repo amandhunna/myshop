@@ -102,7 +102,7 @@ const InfoForm = props => {
   return (
     <React.Fragment>
       <div className="form-wrapper">
-        <Form>
+        <Form className="">
           {(
             <>
               <Form.Row className="justify-content-between">
@@ -221,7 +221,7 @@ const InfoForm = props => {
                     label={radioBox.label}
                   />))
               }
-              <Button className="g-button d--inline-block" variant="primary" onClick={onSubmit}>
+              <Button className="" variant="primary" onClick={onSubmit}>
                 {button.title}
               </Button>
             </>

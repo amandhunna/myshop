@@ -19,16 +19,16 @@ export default function NavBar(props) {
                 {/* <i class="fa fa-product-hunt"></i> */}                {/*     <i class="fas fa-dolly-flatbed"></i> */}
                 {lg && "Edit Products"}</Link>
 
-            <Link className="secondary" to="/orders">
-                {/* <i class="fa fa-cart-plus"></i> */}
-                <i className="fa fa-truck"></i>{lg && "Orders"}</Link>
-            <Link className="secondary" to="/info" > <i className="fa fa-address-card"></i>{lg && "Info"}</Link>
 
             <Link className="secondary" to="/cart" > 
             <i className="fa fa-shopping-cart p-relative"></i>
             {lg && "Cart"}
             </Link>
 
+            <Link className="secondary" to="/orders">
+                {/* <i class="fa fa-cart-plus"></i> */}
+                <i className="fa fa-truck"></i>{lg && "Orders"}</Link>
+            <Link className="secondary" to="/info" > <i className="fa fa-address-card"></i>{lg && "Info"}</Link>
 
 
             <div className="g-signIn m-3 d-none"><GoogleLogin /></div>
