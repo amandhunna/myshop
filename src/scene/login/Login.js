@@ -5,7 +5,7 @@ import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { GoogleLogin } from '../../lib/components/google';
 import './intro.css';
 
-export default function Intro() {
+export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 

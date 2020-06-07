@@ -1,14 +1,20 @@
 import AddProducts from "./scene/addProducts"
 import Order from "./scene/order";
 import Info from "./scene/info";
-import Intro from "./scene/intro"
+import Login from "./scene/login"
 import BuyProducts from './scene/buyProducts';
 import Page404 from "./scene/page404";
+import SignUp from "./scene/signUp";
 const routes = [
     {
-        path: '/',
+        path: '/home',
         titleComponents: { title: 'Home', component: [] },
-        component: Intro
+        component: Login
+    },
+    {
+        path: '/signup',
+        titleComponents: { title: 'Home', component: [] },
+        component: SignUp
     },
     {
         path: '/info',

@@ -9,7 +9,7 @@ export default function NavBar(props) {
     return (
         <nav id="sideBar" className={`d-none d-flex flex-sm-column w-md-100 ${active}`} onClick={() => setActive("inactive")}>
 
-            <Link className="secondary" to="/">
+            <Link className="secondary" to="/home">
                 <i className="fa fa-home"></i>{lg && "Home"}</Link>
             <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>
 
