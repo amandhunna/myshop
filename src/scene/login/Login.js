@@ -32,9 +32,7 @@ export default function Login() {
                         <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>
-                        Login {' '}  <i className="fa fa-power-off" aria-hidden="true"></i>
-                    </Button>
+                    <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>Login</Button>
                 </Form>
             </Col>
             <Link className="secondary signupLink" to="/signup">Not a user? click here sign up</Link>
