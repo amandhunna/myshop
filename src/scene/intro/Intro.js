@@ -1,5 +1,6 @@
 /* eslint-disable no-unreachable */
 import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { GoogleLogin } from '../../lib/components/google';
 import './intro.css';
@@ -36,8 +37,9 @@ export default function Intro() {
                     </Button>
                 </Form>
             </Col>
-
+            <Link className="secondary signupLink" to="/signup">Not a user? click here sign up</Link>
         </Row >
+
     </Container >
     if (false) return (
         <div className="m-5">
