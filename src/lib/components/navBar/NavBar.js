@@ -14,15 +14,15 @@ export default function NavBar(props) {
             <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>
 
             <Link className="secondary" to="/addProducts" >
-            <i class="fas fa-edit"></i>
+                <i class="fas fa-edit"></i>
                 {/* <i className="fa fa-upload"> </i>*/}
                 {/* <i class="fa fa-product-hunt"></i> */}                {/*     <i class="fas fa-dolly-flatbed"></i> */}
                 {lg && "Edit Products"}</Link>
 
 
-            <Link className="secondary" to="/cart" > 
-            <i className="fa fa-shopping-cart p-relative"></i>
-            {lg && "Cart"}
+            <Link className="secondary" to="/cart" >
+                <i className="fa fa-shopping-cart p-relative"></i>
+                {lg && "Cart"}
             </Link>
 
             <Link className="secondary" to="/orders">
@@ -31,7 +31,9 @@ export default function NavBar(props) {
             <Link className="secondary" to="/info" > <i className="fa fa-address-card"></i>{lg && "Info"}</Link>
 
 
-            <div className="g-signIn m-3 d-none"><GoogleLogin /></div>
+            <div className="secondary m-3"><GoogleLogin /><span className="ml-3" >
+                {lg && "Logout"}
+            </span></div>
         </nav>
     )
 }
