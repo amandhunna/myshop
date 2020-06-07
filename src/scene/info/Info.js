@@ -8,7 +8,7 @@ const Info = props => {
   const [isSeller, setIsSeller] = useState(false);
   return (<>
     <Container className="infoPage p-5">
-      <p>Join app as a</p>
+      <p>Use app as a</p>
       <Row className="position-relative rounded">
         <Col>
           <Form>
@@ -19,7 +19,7 @@ const Info = props => {
                   name="seller"
                   value="Customer"
                   checked={!isSeller}
-                  onClick={(e) => setIsSeller(e.target.value.toLowerCase() === "provider")}
+                  onChange={(e) => setIsSeller(e.target.value.toLowerCase() === "provider")}
                   id="Customer"
                   label="Customer"
                 />
@@ -28,7 +28,7 @@ const Info = props => {
                   name="seller"
                   value="provider"
                   checked={isSeller}
-                  onClick={(e) => setIsSeller(e.target.value.toLowerCase() === "provider")}
+                  onChange={(e) => setIsSeller(e.target.value.toLowerCase() === "provider")}
                   id="Seller"
                   label="Provider"
                 />

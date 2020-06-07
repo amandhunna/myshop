@@ -3,12 +3,27 @@ import { GoogleLogin } from 'react-google-login';
 
 const LoginGoogle = () => {
 
-    const responseGoogle = (response) => {
-        console.log(response);
+    const responseGoogle = (googleUser) => {
+
+        const id_token = googleUser.getAuthResponse().id_token;
+        const { profileObj } = googleUser;
+
+        const data = {
+            userData: {
+                name: profileObj.name,
+                email: profileObj.email,
+                firstName: profileObj.givenName,
+                lastName: profileObj.familyName,
+                googleId: profileObj.googleId,
+                imageUrl: profileObj.imageUrl,
+            },
+            tokenId: id_token,
+        }
+        console.log(data);
     }
+
     const buttonText = (<div className='mx-5'>
         <span className='mr-3 font-weight-bolder'>Login</span>
-        {/* <i className="fa fa-power-off" aria-hidden="true"></i> */}
     </div>);
 
     return <GoogleLogin
@@ -20,5 +35,4 @@ const LoginGoogle = () => {
         className='googleLogin'
     />
 }
-
 export default LoginGoogle;
