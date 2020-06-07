@@ -1,8 +1,8 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 
-const LoginGoogle = () => {
-
+const LoginGoogle = (props) => {
+    const { onGoogleClick } = props;
     const responseGoogle = (googleUser) => {
 
         const id_token = googleUser.getAuthResponse().id_token;
@@ -19,7 +19,7 @@ const LoginGoogle = () => {
             },
             tokenId: id_token,
         }
-        console.log(data);
+        onGoogleClick(data);
     }
 
     const buttonText = (<div className='mx-5'>

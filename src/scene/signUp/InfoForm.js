@@ -37,7 +37,7 @@ const getFormCmsData = {
 }
 
 const InfoForm = props => {
-  const { isSeller } = props;
+  const { isSeller, setStep } = props;
   const [errorMessage, setErrorMessage] = useState(false);
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
@@ -57,7 +57,7 @@ const InfoForm = props => {
     }));
     return validationError;
   };
-
+  const onPrevious = () => { setStep(1) }
   const onSubmit = async () => {
     const errorArr = [];
     errorArr.push(await handleValidation("location", location));
@@ -166,7 +166,8 @@ const InfoForm = props => {
                     label={radioBox.label}
                   />))
               }
-              <Button className="mt-4" variant="primary" onClick={onSubmit}>
+              <Button className="mt-4" variant="secondary" onClick={onPrevious}>Previous</Button>
+              <Button className="mt-4 ml-3" variant="primary" onClick={onSubmit}>
                 {button.title}
               </Button>
             </>

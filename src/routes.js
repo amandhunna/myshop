@@ -1,6 +1,5 @@
 import AddProducts from "./scene/addProducts"
 import Order from "./scene/order";
-import Info from "./scene/info";
 import Login from "./scene/login"
 import BuyProducts from './scene/buyProducts';
 import Page404 from "./scene/page404";
@@ -13,14 +12,10 @@ const routes = [
     },
     {
         path: '/signup',
-        titleComponents: { title: 'Home', component: [] },
+        titleComponents: { title: 'Sign up', component: [] },
         component: SignUp
     },
     {
-        path: '/info',
-        titleComponents: { title: 'User info', component: [] },
-        component: Info
-    }, {
         path: '/buyProducts',
         titleComponents: { title: 'Buy products', component: ["cart"] },
         component: BuyProducts,
