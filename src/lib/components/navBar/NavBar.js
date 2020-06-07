@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import GoogleLogin from "../googleLogin";
+import { GoogleLogout } from "../google";
 import "./css.css";
 
 export default function NavBar(props) {
@@ -14,7 +14,7 @@ export default function NavBar(props) {
             <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>
 
             <Link className="secondary" to="/addProducts" >
-                <i class="fas fa-edit"></i>
+                <i className="fas fa-edit"></i>
                 {/* <i className="fa fa-upload"> </i>*/}
                 {/* <i class="fa fa-product-hunt"></i> */}                {/*     <i class="fas fa-dolly-flatbed"></i> */}
                 {lg && "Edit Products"}</Link>
@@ -31,7 +31,7 @@ export default function NavBar(props) {
             <Link className="secondary" to="/info" > <i className="fa fa-address-card"></i>{lg && "Info"}</Link>
 
 
-            <div className="secondary m-3"><GoogleLogin /><span className="ml-3" >
+            <div className="secondary m-3"><GoogleLogout /><span className="ml-3" >
                 {lg && "Logout"}
             </span></div>
         </nav>
