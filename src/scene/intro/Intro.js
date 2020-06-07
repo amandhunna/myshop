@@ -14,7 +14,12 @@ export default function Intro() {
     }
     return <Container className="login-section p-5">
         <Row>
-            <Col md={6}>
+            <Col md={5} className="border-md-left d-flex justify-content-center align-items-center"><GoogleLogin />
+            </Col>
+            <Col ms={2} className="or-border flex-md-column">
+                <i className="border"></i><i className="p-3">or</i><i className="border"></i>
+            </Col>
+            <Col md={5}>
                 <Form>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
@@ -31,8 +36,7 @@ export default function Intro() {
                     </Button>
                 </Form>
             </Col>
-            <Col md={6} className="border-left d-flex justify-content-center align-items-center"><GoogleLogin />
-            </Col>
+
         </Row >
     </Container >
     if (false) return (
