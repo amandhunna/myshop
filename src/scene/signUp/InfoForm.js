@@ -88,90 +88,86 @@ const InfoForm = props => {
     <React.Fragment>
       <div className="form-wrapper">
         <Form className="">
-          {(
-            <>
-              <Form.Row className="justify-content-between">
-                <Form.Group as={Col} controlId="phoneNumber">
-                  <Form.Control
-                    type="text"
-                    name="phone"
-                    onChange={event => setPhone(event.target.value)}
-                    placeholder={inputFields.phoneNumber.placeholder}
-                    value={phone}
-                    onBlur={() => handleValidation("phone", phone)}
-                  />
-                  {errorMessage && errorMessage.phone ? (
-                    <div className="error-message">{errorMessage.phone}</div>
-                  ) : null}
-                </Form.Group>
-                <Form.Group as={Col} controlId="location">
-                  <Form.Control
-                    type="text"
-                    name="title"
-                    onChange={event => setLocation(event.target.value)}
-                    placeholder={inputFields.location.placeholder}
-                    onBlur={() => handleValidation("location", location)}
-                    value={location}
-                  />
-                  {errorMessage && errorMessage.location ? (
-                    <div className="error-message">{errorMessage.location}</div>
-                  ) : null}
-                </Form.Group>
+          <Form.Row className="justify-content-between">
+            <Form.Group as={Col} sm={12} md={6} controlId="phoneNumber">
+              <Form.Control
+                type="text"
+                name="phone"
+                onChange={event => setPhone(event.target.value)}
+                placeholder={inputFields.phoneNumber.placeholder}
+                value={phone}
+                onBlur={() => handleValidation("phone", phone)}
+              />
+              {errorMessage && errorMessage.phone ? (
+                <div className="error-message">{errorMessage.phone}</div>
+              ) : null}
+            </Form.Group>
+            <Form.Group as={Col} sm={12} md={6} controlId="location">
+              <Form.Control
+                type="text"
+                name="title"
+                onChange={event => setLocation(event.target.value)}
+                placeholder={inputFields.location.placeholder}
+                onBlur={() => handleValidation("location", location)}
+                value={location}
+              />
+              {errorMessage && errorMessage.location ? (
+                <div className="error-message">{errorMessage.location}</div>
+              ) : null}
+            </Form.Group>
 
-                {isSeller && <Form.Group as={Col} controlId="shopName">
-                  <Form.Control
-                    type="text"
-                    name="email"
-                    onBlur={() => handleValidation("shopName", shopName)}
-                    onChange={event => setShopName(event.target.value)}
-                    placeholder={inputFields.shopName.placeholder}
-                    value={shopName}
-                  />
-                  {errorMessage && errorMessage.shopName ? (
-                    <div className="error-message">{errorMessage.shopName}</div>
-                  ) : null}
-                </Form.Group>}
-              </Form.Row>
-              {isSeller &&
-                <Form.Group controlId="formBlog" className="">
-                  <Form.Control
-                    as="textarea"
-                    rows="3"
-                    type="text"
-                    name="message"
-                    placeholder={inputFields.textArea.placeholder}
-                    onChange={event => setSellItem(event.target.value)}
-                    value={sellItem}
-                    onBlur={() => handleValidation("sellItems", sellItem)}
-                    className={errorMessage && errorMessage.sellItem ? "error" : null}
-                  />
-                  {errorMessage && errorMessage.sellItem ? (
-                    <div className="error-message">{errorMessage.sellItem}</div>
-                  ) : null}
-                </Form.Group>
-              }
-              {isSeller &&
+            {isSeller && <Form.Group as={Col} sm={12} md={12} controlId="shopName">
+              <Form.Control
+                type="text"
+                name="email"
+                onBlur={() => handleValidation("shopName", shopName)}
+                onChange={event => setShopName(event.target.value)}
+                placeholder={inputFields.shopName.placeholder}
+                value={shopName}
+              />
+              {errorMessage && errorMessage.shopName ? (
+                <div className="error-message">{errorMessage.shopName}</div>
+              ) : null}
+            </Form.Group>}
+          </Form.Row>
+          {isSeller &&
+            <Form.Group controlId="formBlog" className="">
+              <Form.Control
+                as="textarea"
+                rows="3"
+                type="text"
+                name="message"
+                placeholder={inputFields.textArea.placeholder}
+                onChange={event => setSellItem(event.target.value)}
+                value={sellItem}
+                onBlur={() => handleValidation("sellItems", sellItem)}
+                className={errorMessage && errorMessage.sellItem ? "error" : null}
+              />
+              {errorMessage && errorMessage.sellItem ? (
+                <div className="error-message">{errorMessage.sellItem}</div>
+              ) : null}
+            </Form.Group>
+          }
+          {isSeller &&
 
-                [{ value: "evenDay", label: "Even days" }, { value: "oddDay", label: "Odd days" }, { value: "daily", label: "Daily" }].map(radioBox => (
-                  <Form.Check
-                    type="radio"
-                    name="openDay"
-                    checked={openOn[radioBox.value]}
-                    value={radioBox.value}
-                    onClick={(e) => {
-                      const value = e.target.value;
-                      setOpenOn(value)
-                    }}
-                    id={radioBox.value}
-                    label={radioBox.label}
-                  />))
-              }
-              <Button className="mt-4" variant="secondary" onClick={onPrevious}>Previous</Button>
-              <Button className="mt-4 ml-3" variant="primary" onClick={onSubmit}>
-                {button.title}
-              </Button>
-            </>
-          )}
+            [{ value: "evenDay", label: "Even days" }, { value: "oddDay", label: "Odd days" }, { value: "daily", label: "Daily" }].map(radioBox => (
+              <Form.Check
+                type="radio"
+                name="openDay"
+                checked={openOn[radioBox.value]}
+                value={radioBox.value}
+                onClick={(e) => {
+                  const value = e.target.value;
+                  setOpenOn(value)
+                }}
+                id={radioBox.value}
+                label={radioBox.label}
+              />))
+          }
+          <Button className="mt-4" variant="secondary" onClick={onPrevious}>Previous</Button>
+          <Button className="mt-4 ml-3" variant="primary" onClick={onSubmit}>
+            {button.title}
+          </Button>
         </Form>
       </div>
     </React.Fragment>

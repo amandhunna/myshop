@@ -16,7 +16,7 @@ const SignUp = (props) => {
             {step === 1 && <Step1 {...stepState} />}
             {step === 2 && <Step2  {...stepState} />}
 
-            <Link className="secondary signupLink" to="/home">Already a user? click here Login</Link>
+            <Link className="secondary signupLink" to="/home">Already a user? click here to Login</Link>
         </Container >
     )
 }

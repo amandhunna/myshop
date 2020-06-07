@@ -42,7 +42,7 @@ const Step1 = (props) => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                    <Form.Control type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                 </Form.Group>
 
                 <Form.Group controlId="formBasicPassword">
