@@ -6,7 +6,7 @@ import Step1 from './Step1';
 import './signUp.css';
 
 const SignUp = (props) => {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(2);
     const [data, setData] = useState({})
     const stepState = { setStep, data, setData };
 

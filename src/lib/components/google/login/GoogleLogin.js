@@ -1,15 +1,16 @@
 import React from 'react';
+import config from '../../../../lib/config';
 import { GoogleLogin } from 'react-google-login';
 
 const LoginGoogle = (props) => {
     const { onGoogleClick } = props;
     const responseGoogle = (googleUser) => {
-
+        console.log(googleUser)
         const id_token = googleUser.getAuthResponse().id_token;
         const { profileObj } = googleUser;
 
         const data = {
-            userData: {
+            data: {
                 name: profileObj.name,
                 email: profileObj.email,
                 firstName: profileObj.givenName,
@@ -27,7 +28,7 @@ const LoginGoogle = (props) => {
     </div>);
 
     return <GoogleLogin
-        clientId="1021639348087-97llph7pa6aa3v4ffta2jl2ammg307u1.apps.googleusercontent.com"
+        clientId={config.googleClientId}
         buttonText={buttonText}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}

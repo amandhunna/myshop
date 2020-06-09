@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import config from '../../lib/config';
 import { Button, Form, Col } from "react-bootstrap";
 
 import yupValidate from "./yup";
@@ -6,7 +8,6 @@ import yupValidate from "./yup";
 const getFormCmsData = {
   "contactUsForm": {
     "heading": "Contact us",
-    "description": "Explore unlimited opportunities of marketplace commerce with Marketcube.",
     "inputFields": {
       "firstName": {
         "placeholder": "Your first name *"
@@ -37,7 +38,7 @@ const getFormCmsData = {
 }
 
 const InfoForm = props => {
-  const { isSeller, setStep } = props;
+  const { isSeller, setStep, data } = props;
   const [errorMessage, setErrorMessage] = useState(false);
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
@@ -66,12 +67,51 @@ const InfoForm = props => {
       errorArr.push(await handleValidation("shopName", shopName));
       errorArr.push(await handleValidation("sellItem", sellItem));
     }
-    console.log('---------', phone,
+    const step2Data = {
+      phone,
       location,
-      shopName,
-      sellItem,
-      openOn
-    )
+      isSeller,
+      ...isSeller ? { shopName, sellItem, openOn } : {},
+    }
+
+    const reqData = {
+      CLIENT_ID: config.googleClientId,
+      tokenId: data.tokenId,
+      data: { ...data.data, ...step2Data }
+    }
+
+    if (true || data.tokenId) {
+      const url = 'http://localhost:3001/googleLogin';
+
+      /* let response = () => {
+        return new Promise(function (resolve, reject) {
+          fetch(url, {
+            data: reqData,
+            method: 'Post',
+          }).then(response => {
+            resolve(response);
+          });
+        });
+      };
+      try {
+        let responseData = await response();
+        console.log(responseData.data);
+      } catch (error) {
+        console.log('error--------', error)
+      } */
+      try {
+        const response = await axios({
+          url,
+          data: reqData,
+          method: 'Post'
+        });
+
+        console.log('response-----', response);
+      } catch (error) {
+        console.log('error--------', error)
+      }
+
+    }
     const hasError = !errorArr.some(value => value !== "");
     if (!hasError) {
       /*      const data = {

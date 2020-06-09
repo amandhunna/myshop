@@ -16,7 +16,7 @@ const Step1 = (props) => {
         setStep(2);
     }
 
-    const onSubmit = (e) => {
+    const next = (e) => {
         e.preventDefault();
         const mData = {
             lastName, firstName, email, password, name: `${firstName} ${lastName}`
@@ -53,7 +53,7 @@ const Step1 = (props) => {
                     <Form.Control type="password" placeholder="Confirm password" onChange={(e) => setConfirmP(e.target.value)} />
                 </Form.Group>
             </Form>
-            <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>Next</Button>
+            <Button variant="primary" type="submit" onClick={(e) => next(e)}>Next</Button>
         </Col>
     </Row >
     )

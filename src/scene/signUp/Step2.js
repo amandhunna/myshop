@@ -4,7 +4,7 @@ import { Row, Col, Form } from "react-bootstrap";
 import InfoForm from "./InfoForm";
 
 const Step2 = props => {
-  const { setStep } = props;
+  const { setStep, data } = props;
   const [isSeller, setIsSeller] = useState(false);
   return (<div className="mt-3">
     <p>Use app as a</p>
@@ -39,7 +39,7 @@ const Step2 = props => {
     </Row>
     <Row className="justify-content-between">
       <Col className="align-items-center d-flex">
-        <InfoForm isSeller={isSeller} setStep={setStep} />
+        <InfoForm isSeller={isSeller} setStep={setStep} data={data} />
       </Col>
     </Row>
   </div>
