@@ -74,38 +74,36 @@ const InfoForm = props => {
       ...isSeller ? { shopName, sellItem, openOn } : {},
     }
 
-    const reqData = {
-      CLIENT_ID: config.googleClientId,
-      tokenId: data.tokenId,
-      data: { ...data.data, ...step2Data }
-    }
+    const reqData = { ...(data.data || data), ...step2Data }
+    console.log('------nore', reqData)
 
-    if (true || data.tokenId) {
-      const url = 'http://localhost:3001/googleLogin';
-
-      /* let response = () => {
-        return new Promise(function (resolve, reject) {
-          fetch(url, {
-            data: reqData,
-            method: 'Post',
-          }).then(response => {
-            resolve(response);
-          });
-        });
-      };
-      try {
-        let responseData = await response();
-        console.log(responseData.data);
-      } catch (error) {
-        console.log('error--------', error)
-      } */
+    if (!data.tokenId) {
+      const url = config.signUpURL;
       try {
         const response = await axios({
           url,
-          data: reqData,
+          data: { ...reqData },
           method: 'Post'
         });
+        console.log('response-----', response);
+      } catch (error) {
+        console.log('error--------', error)
+      }
+    }
 
+    if (data.tokenId) {
+      const googleData = {
+        ...reqData,
+        CLIENT_ID: config.googleClientId,
+        tokenId: data.tokenId,
+      }
+      const url = config.googleLoginURL;
+      try {
+        const response = await axios({
+          url,
+          data: { ...googleData },
+          method: 'Post'
+        });
         console.log('response-----', response);
       } catch (error) {
         console.log('error--------', error)
