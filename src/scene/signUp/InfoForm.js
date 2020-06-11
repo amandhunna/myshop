@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import config from '../../lib/config';
 import { Button, Form, Col } from "react-bootstrap";
-
+import LoaderButton from '../../lib/components/loaderButton';
 import yupValidate from "./yup";
 
 const getFormCmsData = {
@@ -47,6 +47,8 @@ const InfoForm = props => {
   const [sellItem, setSellItem] = useState("");
   const [openOn, setOpenOn] = useState("");
 
+  const [isRequesting, setIsRequesting] = useState(false)
+
 
   const { inputFields, button } = cmsData;
 
@@ -60,6 +62,9 @@ const InfoForm = props => {
   };
   const onPrevious = () => { setStep(1) }
   const onSubmit = async () => {
+    if (isRequesting) return;
+
+    setIsRequesting(true);
     const errorArr = [];
     errorArr.push(await handleValidation("location", location));
     errorArr.push(await handleValidation("phone", phone));
@@ -67,6 +72,13 @@ const InfoForm = props => {
       errorArr.push(await handleValidation("shopName", shopName));
       errorArr.push(await handleValidation("sellItem", sellItem));
     }
+
+    const hasError = errorArr.some(value => value !== "");
+    if (hasError) {
+      setIsRequesting(false);
+      return
+    };
+
     const step2Data = {
       phone,
       location,
@@ -75,8 +87,8 @@ const InfoForm = props => {
     }
 
     const reqData = { ...(data.data || data), ...step2Data }
-    console.log('------nore', reqData)
 
+    console.log(data, '------nore', reqData)
     if (!data.tokenId) {
       const url = config.signUpURL;
       try {
@@ -89,6 +101,8 @@ const InfoForm = props => {
       } catch (error) {
         console.log('error--------', error)
       }
+      setIsRequesting(false);
+      return;
     }
 
     if (data.tokenId) {
@@ -104,22 +118,13 @@ const InfoForm = props => {
           data: { ...googleData },
           method: 'Post'
         });
-        console.log('response-----', response);
+        console.log('response-----', response.data);
       } catch (error) {
         console.log('error--------', error)
       }
-
+      setIsRequesting(false);
+      return;
     }
-    const hasError = !errorArr.some(value => value !== "");
-    if (!hasError) {
-      /*      const data = {
-             phone,
-             location,
-             shopName,
-             sellItem,
-             openOn
-           }; */
-    };
   }
 
   return (
@@ -203,9 +208,9 @@ const InfoForm = props => {
               />))
           }
           <Button className="mt-4" variant="secondary" onClick={onPrevious}>Previous</Button>
-          <Button className="mt-4 ml-3" variant="primary" onClick={onSubmit}>
+          <LoaderButton className="mt-4 ml-3" variant="primary" isLoading={isRequesting} onClick={onSubmit}>
             {button.title}
-          </Button>
+          </LoaderButton>
         </Form>
       </div>
     </React.Fragment>
