@@ -1,11 +1,12 @@
 import {
   firstNameSchema,
   lastNameSchema,
-  emailAddSchema,
+  emailSchema,
   numberSchema,
   locationSchema,
   shopNameSchema,
-  sellItemSchema
+  sellItemSchema,
+  passwordSchema,
 } from "./schema";
 
 const validateValue = async (schema, value) => schema.validate(value);
@@ -27,8 +28,8 @@ const validate = async (field, value) => {
     case "lastName":
       promise = validateValue(lastNameSchema, { lastName: value });
       break;
-    case "emailAdd":
-      promise = validateValue(emailAddSchema, { emailAdd: value });
+    case "email":
+      promise = validateValue(emailSchema, { email: value });
       break;
     case "phone":
       promise = validateValue(numberSchema, { phone: value });
@@ -41,6 +42,9 @@ const validate = async (field, value) => {
       break;
     case "sellItem":
       promise = validateValue(sellItemSchema, { sellItem: value });
+      break;
+    case "password":
+      promise = validateValue(passwordSchema, { password: value });
       break;
     default: return "";
   }

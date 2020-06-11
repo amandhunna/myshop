@@ -39,6 +39,7 @@ const getFormCmsData = {
 
 const InfoForm = props => {
   const { isSeller, setStep, data } = props;
+  const [cmsData] = useState(getFormCmsData.contactUsForm);
   const [errorMessage, setErrorMessage] = useState(false);
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
@@ -46,7 +47,6 @@ const InfoForm = props => {
   const [sellItem, setSellItem] = useState("");
   const [openOn, setOpenOn] = useState("");
 
-  const [cmsData] = useState(getFormCmsData.contactUsForm);
 
   const { inputFields, button } = cmsData;
 

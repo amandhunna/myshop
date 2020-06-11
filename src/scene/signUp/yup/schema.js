@@ -8,8 +8,8 @@ const lastNameSchema = yup.object().shape({
   lastName: yup.string().required("Last name is required")
 });
 
-const emailAddSchema = yup.object().shape({
-  emailAdd: yup.string().email().required("Email address is required")
+const emailSchema = yup.object().shape({
+  email: yup.string().email().required("Email address is required")
 });
 
 const numberSchema = yup.object().shape({
@@ -28,12 +28,17 @@ const sellItemSchema = yup.object().shape({
   sellItem: yup.string().required("What you sell is required")
 });
 
+const passwordSchema = yup.object().shape({
+  password: yup.string().required("Password is required")
+});
+
 export {
   firstNameSchema,
   lastNameSchema,
-  emailAddSchema,
+  emailSchema,
   numberSchema,
   locationSchema,
   shopNameSchema,
-  sellItemSchema
+  sellItemSchema,
+  passwordSchema
 };

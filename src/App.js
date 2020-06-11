@@ -8,16 +8,36 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import PrivateLayout from "./lib/layout/privateLayout/PrivateLayout";
-import routes from "./routes";
+import privateRoutes from "./privateRoutes";
+
+import publicRoutes from "./publicRoutes";
 
 function App() {
 
 
   return (
     <Router>
-      {/* <div class="g-signIn d-none d-md-block"><GoogleLogin /></div> */}
       <Switch>
-        {routes.map((route, key) => {
+        {publicRoutes.map((route, key) => {
+          const { component, path, titleComponents, header, unScrollable } = route;
+          return (
+            <Route
+              exact
+              path={path}
+              key={key}
+              render={(route) =>
+                <PrivateLayout
+                  route={route}
+                  component={component}
+                  titleComponents={titleComponents}
+                  header={header}
+                  unScrollable={unScrollable}
+                />
+              }
+            />
+          )
+        })}
+        {privateRoutes.map((route, key) => {
           const { component, path, titleComponents, header, unScrollable } = route;
           return (
             <Route
