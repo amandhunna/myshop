@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 links:
-
+- context api: https://alligator.io/react/usecontext/
 - bootstrap: https://hackerthemes.com/bootstrap-cheatsheet/#flex-wrap
 - https://picsum.photos/
 - fontawesome css: https://www.bootstrapcdn.com/fontawesome/

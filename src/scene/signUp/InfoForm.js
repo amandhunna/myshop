@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from 'axios';
 import config from '../../lib/config';
 import { Button, Form, Col } from "react-bootstrap";
 import LoaderButton from '../../lib/components/loaderButton';
 import yupValidate from "./yup";
+import CurrentUserContext from "../../lib/components/context/currentUser";
 
 const getFormCmsData = {
   "contactUsForm": {
@@ -38,6 +39,8 @@ const getFormCmsData = {
 }
 
 const InfoForm = props => {
+  const currentUser = useContext(CurrentUserContext);
+  console.log('----currentUser--------', currentUser)
   const { isSeller, setStep, data } = props;
   const [cmsData] = useState(getFormCmsData.contactUsForm);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -92,27 +95,27 @@ const InfoForm = props => {
     if (!data.tokenId) {
       const url = config.signUpURL;
       try {
-   /*      const response = await axios({
-          url,
-          data: { ...reqData },
+        /*      const response = await axios({
+               url,
+               data: { ...reqData },
+               method: 'Post'
+             });
+             console.log('response-----', response);
+     
+             if (response.data.data) { */
+        const loginUrl = config.login;
+        const data = {
+          email: reqData.email,
+          password: reqData.password
+        }
+
+        const response = await axios({
+          url: loginUrl,
+          data,
           method: 'Post'
         });
-        console.log('response-----', response);
-
-        if (response.data.data) { */
-          const loginUrl = config.login;
-          const data = {
-            email: reqData.email,
-            password: reqData.password
-          }
-
-          const response = await axios({
-            url: loginUrl,
-            data,
-            method: 'Post'
-          });
-          console.log('res token ', response)
-       // }
+        console.log('res token ', response)
+        // }
       } catch (error) {
         console.log('error--------', error)
       }
