@@ -92,17 +92,31 @@ const InfoForm = props => {
     if (!data.tokenId) {
       const url = config.signUpURL;
       try {
-        const response = await axios({
+   /*      const response = await axios({
           url,
           data: { ...reqData },
           method: 'Post'
         });
         console.log('response-----', response);
+
+        if (response.data.data) { */
+          const loginUrl = config.login;
+          const data = {
+            email: reqData.email,
+            password: reqData.password
+          }
+
+          const response = await axios({
+            url: loginUrl,
+            data,
+            method: 'Post'
+          });
+          console.log('res token ', response)
+       // }
       } catch (error) {
         console.log('error--------', error)
       }
       setIsRequesting(false);
-      return;
     }
 
     if (data.tokenId) {

@@ -7,5 +7,12 @@ const helper = {
         });
         return value;
     },
+    formatResponse: (response) => {
+        if (response.data.status === 200) {
+            return response.data
+        } else {
+            return response.data
+        }
+    }
 }
 export default helper;
