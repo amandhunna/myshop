@@ -1,3 +1,4 @@
+import axios from 'axios';
 const helper = {
     randomKey: (key) => key + Math.random(),
     requiredFields: (data, reqField) => {
@@ -12,6 +13,22 @@ const helper = {
             return response.data
         } else {
             return response.data
+        }
+    },
+    requestAPI: async (requestData) => {
+        const { url, data, method = 'Post' } = requestData;
+        try {
+            const response = await axios({
+                url,
+                data,
+                method
+            });
+            const responseData = helper.formatResponse(response);
+            return responseData;
+
+        } catch (error) {
+            // logger.error("axios error", error);
+            return error;
         }
     }
 }

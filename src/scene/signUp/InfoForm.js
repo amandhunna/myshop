@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from 'axios';
-import config from '../../lib/config';
+import config from '../../config';
 import { Button, Form, Col } from "react-bootstrap";
 import LoaderButton from '../../lib/components/loaderButton';
 import yupValidate from "./yup";

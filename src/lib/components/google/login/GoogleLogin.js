@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '../../../../lib/config';
+import config from '../../../../config';
 import { GoogleLogin } from 'react-google-login';
 
 const LoginGoogle = (props) => {

@@ -3,15 +3,38 @@ import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import { GoogleLogin } from '../../lib/components/google';
+import helper from '../../lib/helper/base';
+import config from '../../config';
 import './intro.css';
+import logger from '../../lib/helper/logger';
 
-export default function Login() {
+export default function Login(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         console.log(email, password)
+        const url = config.loginURL
+        const reqData = { data: { email, password }, url }
+        try {
+            const response = await helper.requestAPI(reqData);
+            const { status, data, error } = response;
+            logger.info('login response', response)
+            if (status === 201) {
+                localStorage.setItem('sos_token', data);
+                props.route.history.push('/orders');
+            }
+
+            if (error) {
+                setError(error.message);
+            }
+
+        }
+        catch (error) {
+            logger.warn('login error occured', error)
+        }
     }
     return <Container className="login-section p-5">
         <Row>
@@ -33,6 +56,7 @@ export default function Login() {
                     </Form.Group>
 
                     <Button variant="primary" type="submit" onClick={(e) => onSubmit(e)}>Login</Button>
+                    {error && <span className='ml-3'>{error}</span>}
                 </Form>
             </Col>
             <Link className="secondary signupLink" to="/signup">Not a user? click here sign up</Link>

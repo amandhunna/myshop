@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        {publicRoutes.map((route, key) => {
+        {/* {publicRoutes.map((route, key) => {
           const { component, path, titleComponents, header, unScrollable } = route;
           return (
             <Route
@@ -36,7 +36,7 @@ function App() {
               }
             />
           )
-        })}
+        })} */}
         {privateRoutes.map((route, key) => {
           const { component, path, titleComponents, header, unScrollable } = route;
           return (
