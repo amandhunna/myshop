@@ -4,7 +4,10 @@ import config from '../../lib/config';
 import { Button, Form, Col } from "react-bootstrap";
 import LoaderButton from '../../lib/components/loaderButton';
 import yupValidate from "./yup";
+import helper from "../../lib/helper/base";
+import logger from "../../lib/helper/logger";
 import CurrentUserContext from "../../lib/components/context/currentUser";
+import Toast from "../../lib/components/toast";
 
 const getFormCmsData = {
   "contactUsForm": {
@@ -40,7 +43,7 @@ const getFormCmsData = {
 
 const InfoForm = props => {
   const currentUser = useContext(CurrentUserContext);
-  console.log('----currentUser--------', currentUser)
+  logger.info("currentUser: ", currentUser);
   const { isSeller, setStep, data } = props;
   const [cmsData] = useState(getFormCmsData.contactUsForm);
   const [errorMessage, setErrorMessage] = useState(false);
@@ -49,6 +52,7 @@ const InfoForm = props => {
   const [shopName, setShopName] = useState("");
   const [sellItem, setSellItem] = useState("");
   const [openOn, setOpenOn] = useState("");
+  const [toastState, setToastState] = useState({ active: false });
 
   const [isRequesting, setIsRequesting] = useState(false)
 
@@ -91,33 +95,34 @@ const InfoForm = props => {
 
     const reqData = { ...(data.data || data), ...step2Data }
 
-    console.log(data, '------nore', reqData)
+    logger.info('request data: ', reqData)
     if (!data.tokenId) {
       const url = config.signUpURL;
       try {
-        /*      const response = await axios({
-               url,
-               data: { ...reqData },
-               method: 'Post'
-             });
-             console.log('response-----', response);
-     
-             if (response.data.data) { */
-        const loginUrl = config.login;
-        const data = {
-          email: reqData.email,
-          password: reqData.password
-        }
-
         const response = await axios({
-          url: loginUrl,
-          data,
+          url,
+          data: { ...reqData },
           method: 'Post'
         });
-        console.log('res token ', response)
-        // }
+        const responseData = helper.formatResponse(response);
+        logger.info('user create request response: ', responseData);
+        let toastBody = "Unknown state occured, please report this";
+        if (responseData.status !== 200) {
+          switch (responseData.error) {
+            case 'required_unique_email': toastBody = 'Email already registered'
+            default: toastBody = 'Unknwon error has occured'; break;
+          }
+        }
+        else {
+          toastBody = 'User created successfully';
+        }
+        setToastState({ active: true, toastBody })
+        setTimeout(() => {
+          currentUser.history.push('/login');
+        }, 1000);
+
       } catch (error) {
-        console.log('error--------', error)
+        logger.error("user create failed response", error);
       }
       setIsRequesting(false);
     }
@@ -135,9 +140,9 @@ const InfoForm = props => {
           data: { ...googleData },
           method: 'Post'
         });
-        console.log('response-----', response.data);
+        logger.info('google user create request response: ', response);
       } catch (error) {
-        console.log('error--------', error)
+        logger.error("google user create failed response", error);
       }
       setIsRequesting(false);
       return;
@@ -146,6 +151,7 @@ const InfoForm = props => {
 
   return (
     <React.Fragment>
+      <Toast toastState={toastState} setToastState={setToastState} autoHide={false} />
       <div className="form-wrapper">
         <Form className="">
           <Form.Row className="justify-content-between">
@@ -235,4 +241,19 @@ const InfoForm = props => {
 };
 
 export default InfoForm;
+/*
 
+  if (response.data.data) {
+    const loginUrl = config.login;
+    const data = {
+      email: reqData.email,
+      password: reqData.password
+    }
+
+    const response = await axios({
+      url: loginUrl,
+      data,
+      method: 'Post'
+    });
+    console.log('res token ', response)
+    // } */

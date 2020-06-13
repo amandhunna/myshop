@@ -4,8 +4,8 @@ import './toast.css'
 
 // use it as Toast in other files
 const ToastWrapper = (props) => {
-    const { toastState, setToastState } = props;
-    const { toastBody, toastHeader, autoHide = false } = toastState;
+    const { toastState, setToastState, autoHide = true } = props;
+    const { toastBody, toastHeader } = toastState;
     return (
 
         <Toast className='mx-3' onClose={() => setToastState({ active: false })}

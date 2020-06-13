@@ -3,17 +3,10 @@
   opacity: 1;
   position: absolute;
   z-index: 9999;
-  right: 30%;
-  top: 20%;
+  right: 0%;
+  top: 0%;
 }
-.toast-add > button {
-  border: none;
-  display: flex;
-  margin: 16px;
-  justify-content: center;
-  align-items: center;
-  background: deepskyblue;
-  border-radius: 25px;
-  padding: 10px;
-  min-width: 280px;
+.toast-body {
+  padding: .75rem;
+  color: #000;
 }
