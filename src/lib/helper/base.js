@@ -1,22 +1,37 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import logger from './logger';
-const helper = {
-    randomKey: (key) => key + Math.random(),
-    requiredFields: (data, reqField) => {
+class Helper {
+    randomKey(key) { return key + Math.random() }
+
+    requiredFields(data, reqField) {
         const value = reqField.filter(item => {
             if (data[item] === undefined) return item;
             return false;
         });
         return value;
-    },
-    formatResponse: (response) => {
+    }
+
+    formatResponse(response) {
         if (response.data.status === 200) {
             return response.data
         } else {
-            return response.data
+            return response
         }
-    },
-    requestAPI: async (requestData) => {
+    }
+
+    getToken() {
+        const token = localStorage.getItem('sos_token');
+        return token;
+    }
+
+    isTokenExpired() {
+        const decoded = jwtDecode(this.getToken());
+        const isExpired = Date.now() / 1000 > decoded.exp;
+        return isExpired;
+    };
+
+    async requestAPI(requestData) {
         const { url, data, method = 'Post', token } = requestData;
         const formatData = {
             url,
@@ -36,4 +51,4 @@ const helper = {
         }
     }
 }
-export default helper;
+export default new Helper();
