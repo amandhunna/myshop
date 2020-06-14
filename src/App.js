@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Switch,
   Route,
 } from "react-router-dom";
@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import PrivateLayout from "./lib/layout/privateLayout/PrivateLayout";
+import PublicLayout from "./lib/layout/publicLayout/PublicLayout";
 import privateRoutes from "./privateRoutes";
 
 import publicRoutes from "./publicRoutes";
@@ -16,9 +17,9 @@ function App() {
 
 
   return (
-    <Router>
-      <Switch>
-        {/* {publicRoutes.map((route, key) => {
+    <BrowserRouter>
+
+        {publicRoutes.map((route, key) => {
           const { component, path, titleComponents, header, unScrollable } = route;
           return (
             <Route
@@ -26,7 +27,7 @@ function App() {
               path={path}
               key={key}
               render={(route) =>
-                <PrivateLayout
+                <PublicLayout
                   route={route}
                   component={component}
                   titleComponents={titleComponents}
@@ -36,7 +37,7 @@ function App() {
               }
             />
           )
-        })} */}
+        })}
         {privateRoutes.map((route, key) => {
           const { component, path, titleComponents, header, unScrollable } = route;
           return (
@@ -56,8 +57,7 @@ function App() {
             />
           )
         })}
-      </Switch>
-    </Router>
+    </BrowserRouter>
   );
 }
 

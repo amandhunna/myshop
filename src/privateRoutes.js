@@ -30,21 +30,12 @@ const routes = [
         allowedRoles: ['admin', 'provider'],
         component: AddProducts
     },
-    {
+   /*  {
         path: '*',
         titleComponents: { title: 'Page not found', component: [] },
         component: Page404
 
-    },
+    }, */
 ];
 
 export default routes
-
-/*
-{
-        path: '/signup',
-        titleComponents: { title: 'Sign up', component: [] },
-        component: SignUp
-    },
-
-*/

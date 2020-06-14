@@ -12,12 +12,12 @@ const routes = [
         titleComponents: { title: 'Sign up', component: [] },
         component: SignUp
     },
-    {
+  /*   {
         path: '*',
         titleComponents: { title: 'Page not found', component: [] },
         component: Page404
 
-    }
+    } */
 ]
 
 export default routes
