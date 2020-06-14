@@ -18,7 +18,7 @@ function App() {
 
   return (
     <BrowserRouter>
-
+      <Switch>
         {publicRoutes.map((route, key) => {
           const { component, path, titleComponents, header, unScrollable } = route;
           return (
@@ -56,7 +56,7 @@ function App() {
               }
             />
           )
-        })}
+        })}</Switch>
     </BrowserRouter>
   );
 }
