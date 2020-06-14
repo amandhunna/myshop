@@ -21,7 +21,7 @@ const AddProducts = () => {
         }
         const response = await helper.requestAPI(requestData);
         if (response.data) {
-            const domData = response.data.map(item => <ProductCard colSize={3} key={randomKey("addProducts")} btnType="dangerPrimary" />)
+            const domData = []//response.data.map(item => <ProductCard colSize={3} key={randomKey("addProducts")} btnType="dangerPrimary" />)
             setData(domData);
             setIsLoading(false)
         }

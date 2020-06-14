@@ -8,27 +8,26 @@ const routes = [
     {
         path: '/home',
         titleComponents: { title: 'Home', component: [] },
+        allowedRoles: ['admin', 'provider', 'consumer'],
         component: Login
-    },
-    {
-        path: '/signup',
-        titleComponents: { title: 'Sign up', component: [] },
-        component: SignUp
     },
     {
         path: '/buyProducts',
         titleComponents: { title: 'Buy products', component: ["cart"] },
         component: BuyProducts,
         header: ["cart"],
+        allowedRoles: ['admin', 'consumer'],
         unScrollable: true,
     },
     {
         path: '/orders',
         titleComponents: { title: 'Orders', component: [] },
+        allowedRoles: ['admin', 'provider'],
         component: Order
     }, {
         path: '/addProducts',
         titleComponents: { title: 'Edit products', component: ["uploadProduct"] },
+        allowedRoles: ['admin', 'provider'],
         component: AddProducts
     },
     {
@@ -36,7 +35,16 @@ const routes = [
         titleComponents: { title: 'Page not found', component: [] },
         component: Page404
 
-    }
-]
+    },
+];
 
 export default routes
+
+/*
+{
+        path: '/signup',
+        titleComponents: { title: 'Sign up', component: [] },
+        component: SignUp
+    },
+
+*/

@@ -42,7 +42,7 @@ class Helper {
         logger.info("requestAPI foramtData", formatData)
         try {
             const response = await axios({ ...formatData });
-            const responseData = helper.formatResponse(response);
+            const responseData = this.formatResponse(response);
             return responseData;
 
         } catch (error) {

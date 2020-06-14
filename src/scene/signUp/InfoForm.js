@@ -44,7 +44,7 @@ const getFormCmsData = {
 const InfoForm = props => {
   const currentUser = useContext(CurrentUserContext);
   logger.info("currentUser: ", currentUser);
-  const { isSeller, setStep, data } = props;
+  const { isProvider, setStep, data } = props;
   const [cmsData] = useState(getFormCmsData.contactUsForm);
   const [errorMessage, setErrorMessage] = useState(false);
   const [phone, setPhone] = useState("");
@@ -75,7 +75,7 @@ const InfoForm = props => {
     const errorArr = [];
     errorArr.push(await handleValidation("location", location));
     errorArr.push(await handleValidation("phone", phone));
-    if (isSeller) {
+    if (isProvider) {
       errorArr.push(await handleValidation("shopName", shopName));
       errorArr.push(await handleValidation("sellItem", sellItem));
     }
@@ -89,8 +89,8 @@ const InfoForm = props => {
     const step2Data = {
       phone,
       location,
-      isSeller,
-      ...isSeller ? { shopName, sellItem, openOn } : {},
+      isProvider,
+      ...isProvider ? { shopName, sellItem, openOn } : {},
     }
 
     const reqData = { ...(data.data || data), ...step2Data }
@@ -182,7 +182,7 @@ const InfoForm = props => {
               ) : null}
             </Form.Group>
 
-            {isSeller && <Form.Group as={Col} sm={12} md={12} controlId="shopName">
+            {isProvider && <Form.Group as={Col} sm={12} md={12} controlId="shopName">
               <Form.Control
                 type="text"
                 name="email"
@@ -196,7 +196,7 @@ const InfoForm = props => {
               ) : null}
             </Form.Group>}
           </Form.Row>
-          {isSeller &&
+          {isProvider &&
             <Form.Group controlId="formBlog" className="">
               <Form.Control
                 as="textarea"
@@ -214,7 +214,7 @@ const InfoForm = props => {
               ) : null}
             </Form.Group>
           }
-          {isSeller &&
+          {isProvider &&
 
             [{ value: "evenDay", label: "Even days" }, { value: "oddDay", label: "Odd days" }, { value: "daily", label: "Daily" }].map(radioBox => (
               <Form.Check

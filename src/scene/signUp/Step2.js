@@ -5,7 +5,7 @@ import InfoForm from "./InfoForm";
 
 const Step2 = props => {
   const { setStep, data } = props;
-  const [isSeller, setIsSeller] = useState(false);
+  const [isProvider, setIsProvider] = useState(false);
   return (<div className="mt-3">
     <p>Use app as a</p>
     <Row className="position-relative rounded">
@@ -15,19 +15,19 @@ const Step2 = props => {
             <div className="mb-3 mr-5">
               <Form.Check
                 type="radio"
-                name="seller"
+                name="provider"
                 value="Customer"
-                checked={!isSeller}
-                onChange={(e) => setIsSeller(e.target.value.toLowerCase() === "provider")}
+                checked={!isProvider}
+                onChange={(e) => setIsProvider(e.target.value.toLowerCase() === "provider")}
                 id="Customer"
                 label="Customer"
               />
               <Form.Check
                 type="radio"
-                name="seller"
-                value="provider"
-                checked={isSeller}
-                onChange={(e) => setIsSeller(e.target.value.toLowerCase() === "provider")}
+                name="provider"
+                value="Provider"
+                checked={isProvider}
+                onChange={(e) => setIsProvider(e.target.value.toLowerCase() === "provider")}
                 id="Seller"
                 label="Provider"
               />
@@ -39,7 +39,7 @@ const Step2 = props => {
     </Row>
     <Row className="justify-content-between">
       <Col className="align-items-center d-flex">
-        <InfoForm isSeller={isSeller} setStep={setStep} data={data} />
+        <InfoForm isProvider={isProvider} setStep={setStep} data={data} />
       </Col>
     </Row>
   </div>
