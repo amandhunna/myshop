@@ -10,7 +10,7 @@ import './App.css';
 import PrivateLayout from "./lib/layout/privateLayout/PrivateLayout";
 import PublicLayout from "./lib/layout/publicLayout/PublicLayout";
 import privateRoutes from "./privateRoutes";
-
+import Page404 from "./scene/page404";
 import publicRoutes from "./publicRoutes";
 
 function App() {
@@ -56,7 +56,21 @@ function App() {
               }
             />
           )
-        })}</Switch>
+        })}
+            <Route
+              path='*'
+              render={(route) =>
+                <PrivateLayout
+                  route={route}
+                  component={Page404}
+                  titleComponents={{ title: 'Page not found', component: [] }}
+                />
+              }
+            />
+          )
+        })}
+        
+        </Switch>
     </BrowserRouter>
   );
 }
