@@ -1,4 +1,5 @@
 import axios from 'axios';
+import logger from './logger';
 const helper = {
     randomKey: (key) => key + Math.random(),
     requiredFields: (data, reqField) => {
@@ -16,13 +17,16 @@ const helper = {
         }
     },
     requestAPI: async (requestData) => {
-        const { url, data, method = 'Post' } = requestData;
+        const { url, data, method = 'Post', token } = requestData;
+        const formatData = {
+            url,
+            data,
+            method,
+            headers: { ...token ? { Authorization: `Bearer ${token}` } : {} }
+        }
+        logger.info("requestAPI foramtData", formatData)
         try {
-            const response = await axios({
-                url,
-                data,
-                method
-            });
+            const response = await axios({ ...formatData });
             const responseData = helper.formatResponse(response);
             return responseData;
 

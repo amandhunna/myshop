@@ -16,7 +16,7 @@ export default function Login(props) {
     const onSubmit = async (e) => {
         e.preventDefault();
         console.log(email, password)
-        const url = config.loginURL
+        const url = config.url.login;
         const reqData = { data: { email, password }, url }
         try {
             const response = await helper.requestAPI(reqData);

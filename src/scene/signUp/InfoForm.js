@@ -97,7 +97,7 @@ const InfoForm = props => {
 
     logger.info('request data: ', reqData)
     if (!data.tokenId) {
-      const url = config.signUpURL;
+      const url = config.url.signUp;
       try {
         const response = await axios({
           url,
@@ -133,7 +133,7 @@ const InfoForm = props => {
         CLIENT_ID: config.googleClientId,
         tokenId: data.tokenId,
       }
-      const url = config.googleLoginURL;
+      const url = config.url.googleLogin;
       try {
         const response = await axios({
           url,
@@ -241,19 +241,3 @@ const InfoForm = props => {
 };
 
 export default InfoForm;
-/*
-
-  if (response.data.data) {
-    const loginUrl = config.login;
-    const data = {
-      email: reqData.email,
-      password: reqData.password
-    }
-
-    const response = await axios({
-      url: loginUrl,
-      data,
-      method: 'Post'
-    });
-    console.log('res token ', response)
-    // } */
