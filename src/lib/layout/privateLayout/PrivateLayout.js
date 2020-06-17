@@ -39,7 +39,6 @@ const PrivateLayout = (props) => {
 
     useEffect(() => {
         const token = helper.getToken();
-        console.log(token, !token)
         if (!token) {
             props.route.history.push('/login')
             return

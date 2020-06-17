@@ -1,18 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
 import { GoogleLogout } from "../google";
+import CurrentUserContext from "../context/currentUser";
 import "./css.css";
 
 export default function NavBar(props) {
     const { active, setActive } = props;
+    const currentUser = useContext(CurrentUserContext);
+
     const lg = active === "active"
-    const providerLinks = ["home", "editProducts", "order", "profile"];
+    const adminLinks = ["home", "buyProducts", "editProducts", "order", "cart", "profile"]
     const consumerLinks = ["home", "buyProducts", "cart", "profile"]
-    const links = []
+    const providerLinks = ["home", "editProducts", "order", "profile"];
+    const { isProvider, isAdmin } = currentUser;
+
+
+
+    const getLinks = () => {
+        let forUser = isProvider ? providerLinks : consumerLinks
+        if (isAdmin) forUser = adminLinks;
+        const links = forUser.map(link => nav(link, lg));
+        return links;
+    }
 
     return (
         <nav id="sideBar" className={`d-none d-flex flex-sm-column w-md-100 ${active}`} onClick={() => setActive("inactive")}>
-            {links}
+            {getLinks()}
             <div className="secondary m-3"><GoogleLogout /><span className="ml-3" >
                 {lg && "Logout"}
             </span></div>
@@ -34,8 +47,8 @@ export default function NavBar(props) {
 // home, buyProducts, editProducts, cart, order, profile,
 
 
-function nav(lg) {
-    const link = {
+function nav(link, lg = true) {
+    const linkItems = {
         home: <Link className="secondary" to="/home">
             <i className="fa fa-home"></i>{lg && "Home"}</Link>,
         buyProducts: <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>,
@@ -58,8 +71,7 @@ function nav(lg) {
             <i className="fa fa-truck"></i>{lg && "Orders"}</Link>,
 
         profile: <Link className="secondary" to="/profile" > <i className="fa fa-address-card"></i>{lg && "Profile"}</Link>
-
-
-
     }
+
+    return linkItems[link];
 }
