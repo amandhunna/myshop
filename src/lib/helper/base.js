@@ -13,7 +13,8 @@ class Helper {
     }
 
     formatResponse(response) {
-        if (response.data.status === 200) {
+        const { status } = response.data;
+        if (status === 200 || status === 201) {
             return response.data
         } else {
             return response
@@ -22,11 +23,15 @@ class Helper {
 
     getToken() {
         const token = localStorage.getItem('sos_token');
+        if (!token) return false;
+        JSON.stringify(token)
         return token;
     }
 
     isTokenExpired() {
-        const decoded = jwtDecode(this.getToken());
+        const token = this.getToken();
+        if (!token) return true;
+        const decoded = jwtDecode(token);
         const isExpired = Date.now() / 1000 > decoded.exp;
         return isExpired;
     };

@@ -1,15 +1,14 @@
 import AddProducts from "./scene/addProducts"
 import Order from "./scene/order";
-import Login from "./scene/login"
+import ComingSoon from "./scene/comingSoon"
 import BuyProducts from './scene/buyProducts';
-import Page404 from "./scene/page404";
-import SignUp from "./scene/signUp";
+
 const routes = [
     {
         path: '/home',
         titleComponents: { title: 'Home', component: [] },
         allowedRoles: ['admin', 'provider', 'consumer'],
-        component: Login
+        component: ComingSoon
     },
     {
         path: '/buyProducts',

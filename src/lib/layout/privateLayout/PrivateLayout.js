@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from "../../components/header";
 import Nav from "../../components/navBar/NavBar";
 import CurrentUserContext from "../../components/context/currentUser";
 import { Container, Row, Col } from 'react-bootstrap';
 import GetTitleComponent from "../../components/getTitleComponent"
 import "./pri.css";
-
+import GrowSpinner from '../../components/growSpinner/growSpinner';
+import helper from "../../../lib/helper/base";
 
 
 const PrivateLayout = (props) => {
     const [active, setActive] = useState("inactive");
     const [showCart, setShowCart] = useState(true);
     const [cartOrders, setCartOrders] = useState(0);
-
+    const [isLoading, setIsLoading] = useState(true);
     const searchBarProps = {
         active,
         cartOrders,
@@ -33,6 +34,18 @@ const PrivateLayout = (props) => {
         unScrollable
     } = props
     const lg = active === "active"
+
+
+    useEffect(() => {
+        const tokenExpired = helper.isTokenExpired();
+        setIsLoading(false);
+        if (tokenExpired) props.route.history.push('/login');
+    }, [])
+
+    if (isLoading) {
+        return <GrowSpinner />
+    }
+
     return (
         <CurrentUserContext.Provider value={props.route} >
             <Container fluid>

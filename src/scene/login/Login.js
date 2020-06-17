@@ -23,7 +23,7 @@ export default function Login(props) {
             const { status, data, error } = response;
             logger.info('login response', response)
             if (status === 201) {
-                localStorage.setItem('sos_token', data);
+                localStorage.setItem('sos_token', JSON.stringify(data));
                 props.route.history.push('/orders');
             }
 
