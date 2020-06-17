@@ -54,9 +54,11 @@ const PrivateLayout = (props) => {
     if (isLoading) {
         return <GrowSpinner />
     }
-
+    const context = {
+        ...props.route, ...currentUser
+    }
     return (
-        <CurrentUserContext.Provider value={props.route, currentUser} >
+        <CurrentUserContext.Provider value={context} >
             <Container fluid>
                 <Row>
                     <Header {...searchBarProps} header={header} />

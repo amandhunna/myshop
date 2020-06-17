@@ -1,13 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Link } from "react-router-dom";
 import { GoogleLogout } from "../google";
 import CurrentUserContext from "../context/currentUser";
+import helper from "../../helper/base";
 import "./css.css";
 
 export default function NavBar(props) {
     const { active, setActive } = props;
-    const currentUser = useContext(CurrentUserContext);
-
+    const currentUser = useContext(CurrentUserContext) || {};
+    console.log(currentUser)
     const lg = active === "active"
     const adminLinks = ["home", "buyProducts", "editProducts", "order", "cart", "profile"]
     const consumerLinks = ["home", "buyProducts", "cart", "profile"]
@@ -23,6 +24,10 @@ export default function NavBar(props) {
         return links;
     }
 
+    if(helper.isTokenExpired(currentUser.exp)) {
+        return <></>;
+    }
+
     return (
         <nav id="sideBar" className={`d-none d-flex flex-sm-column w-md-100 ${active}`} onClick={() => setActive("inactive")}>
             {getLinks()}
@@ -34,18 +39,6 @@ export default function NavBar(props) {
 }
 
 //#343a40 !important
-
-
-
-
-
-
-
-
-
-
-// home, buyProducts, editProducts, cart, order, profile,
-
 
 function nav(link, lg = true) {
     const linkItems = {
