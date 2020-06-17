@@ -21,20 +21,35 @@ class Helper {
         }
     }
 
-    getToken() {
-        const token = localStorage.getItem('sos_token');
+    getToken(type = 'sos_token') {
+        const token = localStorage.getItem(type);
         if (!token) return false;
         JSON.stringify(token)
         return token;
     }
 
-    isTokenExpired() {
-        const token = this.getToken();
-        if (!token) return true;
+    decodeToken(token) {
         const decoded = jwtDecode(token);
-        const isExpired = Date.now() / 1000 > decoded.exp;
+        return decoded;
+    }
+
+    isTokenExpired(tokenExp) {
+        if (!tokenExp) return true;
+        const isExpired = Date.now() / 1000 > tokenExp;
         return isExpired;
     };
+
+    isValidLoginToken() {
+        const token = this.getToken();
+        console.log(token, !token)
+        if (!token) return false;
+
+        const decodedToken = this.decodeToken(token)
+        const validToken = !this.isTokenExpired(decodedToken.exp);
+
+        return validToken;
+
+    }
 
     async requestAPI(requestData) {
         const { url, data, method = 'Post', token } = requestData;

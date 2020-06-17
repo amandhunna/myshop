@@ -107,18 +107,24 @@ const InfoForm = props => {
         const responseData = helper.formatResponse(response);
         logger.info('user create request response: ', responseData);
         let toastBody = "Unknown state occured, please report this";
+        // validation errors
         if (responseData.status !== 200) {
           switch (responseData.error) {
             case 'required_unique_email': toastBody = 'Email already registered'
             default: toastBody = 'Unknwon error has occured'; break;
           }
         }
+        // db errors
+        if (responseData.data && responseData.data.status !== 200) {
+          const error = JSON.parse(response.data.error);
+          toastBody = error.message;
+        }
         else {
           toastBody = 'User created successfully';
         }
         setToastState({ active: true, toastBody })
         setTimeout(() => {
-          currentUser.history.push('/login');
+          // currentUser.history.push('/login');
         }, 1000);
 
       } catch (error) {
@@ -151,7 +157,7 @@ const InfoForm = props => {
 
   return (
     <React.Fragment>
-      <Toast toastState={toastState} setToastState={setToastState} autoHide={false} />
+      <Toast toastState={toastState} setToastState={setToastState} autoHide={true} />
       <div className="form-wrapper">
         <Form className="">
           <Form.Row className="justify-content-between">

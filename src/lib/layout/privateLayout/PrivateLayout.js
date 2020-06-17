@@ -37,9 +37,9 @@ const PrivateLayout = (props) => {
 
 
     useEffect(() => {
-        const tokenExpired = helper.isTokenExpired();
+        const isValid = helper.isValidLoginToken();
         setIsLoading(false);
-        if (tokenExpired) props.route.history.push('/login');
+        if (!isValid) props.route.history.push('/login');
     }, [])
 
     if (isLoading) {
