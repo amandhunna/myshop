@@ -14,6 +14,7 @@ const PrivateLayout = (props) => {
     const [showCart, setShowCart] = useState(true);
     const [cartOrders, setCartOrders] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+    const [currentUser, setCurrentUser] = useState({});
     const searchBarProps = {
         active,
         cartOrders,
@@ -37,9 +38,18 @@ const PrivateLayout = (props) => {
 
 
     useEffect(() => {
-        const isValid = helper.isValidLoginToken();
+        const token = helper.getToken();
+        console.log(token, !token)
+        if (!token) {
+            props.route.history.push('/login')
+            return
+        };
+
+        const decodedToken = helper.decodeToken(token)
+        const validToken = !helper.isTokenExpired(decodedToken.exp);
+        if (!validToken) props.route.history.push('/login');
+        setCurrentUser(decodedToken)
         setIsLoading(false);
-        if (!isValid) props.route.history.push('/login');
     }, [])
 
     if (isLoading) {
@@ -47,7 +57,7 @@ const PrivateLayout = (props) => {
     }
 
     return (
-        <CurrentUserContext.Provider value={props.route} >
+        <CurrentUserContext.Provider value={props.route, currentUser} >
             <Container fluid>
                 <Row>
                     <Header {...searchBarProps} header={header} />

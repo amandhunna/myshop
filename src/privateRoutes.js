@@ -2,11 +2,18 @@ import AddProducts from "./scene/addProducts"
 import Order from "./scene/order";
 import ComingSoon from "./scene/comingSoon"
 import BuyProducts from './scene/buyProducts';
+// import Profile from "./scene/profile"
 
 const routes = [
     {
         path: '/home',
         titleComponents: { title: 'Home', component: [] },
+        allowedRoles: ['admin', 'provider', 'consumer'],
+        component: ComingSoon
+    },
+    {
+        path: '/profile',
+        titleComponents: { title: 'Profile', component: [] },
         allowedRoles: ['admin', 'provider', 'consumer'],
         component: ComingSoon
     },
