@@ -1,4 +1,6 @@
-import AddProducts from "./scene/addProducts"
+import EditProducts from "./scene/editProducts";
+import EditProduct from "./scene/editProduct";
+
 import Order from "./scene/order";
 import ComingSoon from "./scene/comingSoon"
 import BuyProducts from './scene/buyProducts';
@@ -31,10 +33,16 @@ const routes = [
         allowedRoles: ['admin', 'provider'],
         component: Order
     }, {
-        path: '/addProducts',
+        path: '/editProducts',
         titleComponents: { title: 'Edit products', component: ["uploadProduct"] },
         allowedRoles: ['admin', 'provider'],
-        component: AddProducts
+        component: EditProducts
+    },
+    {
+        path: '/editProducts/:productId',
+        titleComponents: { title: 'Edit product', component: [] },
+        allowedRoles: ['admin', 'provider'],
+        component: EditProduct
     },
 ];
 

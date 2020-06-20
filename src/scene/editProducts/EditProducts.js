@@ -4,11 +4,9 @@ import axios from 'axios';
 import ProductCard from "../../lib/components/productCard"
 import helper from "../../lib/helper/base";
 import config from "../../config"
-import "./addProducts.css";
+import "./css.css";
 
-const { randomKey } = helper;
-
-const AddProducts = () => {
+const EditProducts = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     const getProductsList = async () => {
@@ -20,12 +18,13 @@ const AddProducts = () => {
             token: localStorage.getItem('sos_token'),
         }
         const response = await helper.requestAPI(requestData);
-        if (response.data) {
-            const domData = []//response.data.map(item => <ProductCard colSize={3} key={randomKey("addProducts")} btnType="dangerPrimary" />)
-            setData(domData);
-            setIsLoading(false)
-        }
+        const resData = helper.formatApiResponse(response);
+        console.log(resData)
+        const domData = resData.map(item => <ProductCard colSize={3} key={helper.randomKey("addProducts")} btnType="dangerPrimary" item={item} />)
+        setData(domData);
+        setIsLoading(false)
     }
+
     useEffect(() => {
         getProductsList()
     }, [])
@@ -41,4 +40,4 @@ const AddProducts = () => {
         </Container>
     )
 }
-export default AddProducts;
+export default EditProducts;

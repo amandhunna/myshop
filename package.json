@@ -11,6 +11,7 @@
     "bootstrap": "^4.5.0",
     "formik": "^2.1.4",
     "jwt-decode": "^2.2.0",
+    "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-datetime": "^2.16.3",

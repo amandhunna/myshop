@@ -46,7 +46,7 @@ function nav(link, lg = true) {
             <i className="fa fa-home"></i>{lg && "Home"}</Link>,
         buyProducts: <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>,
 
-        editProducts: <Link className="secondary" to="/addProducts" >
+        editProducts: <Link className="secondary" to="/editProducts" >
             <i className="fas fa-edit"></i>
             {/* <i className="fa fa-upload"> </i>*/}
             {/* <i class="fa fa-product-hunt"></i> */}

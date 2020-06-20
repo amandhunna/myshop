@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'qs';
 import jwtDecode from 'jwt-decode';
 import logger from './logger';
 class Helper {
@@ -14,6 +15,15 @@ class Helper {
 
     formatResponse(response) {
         const { status } = response.data;
+        if (status === 200 || status === 201) {
+            return response.data
+        } else {
+            return response
+        }
+    }
+
+    formatApiResponse(response) {
+        const { status } = response;
         if (status === 200 || status === 201) {
             return response.data
         } else {

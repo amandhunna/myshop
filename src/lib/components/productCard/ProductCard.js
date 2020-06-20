@@ -9,8 +9,11 @@ const ProductCard = (props) => {
         primaryBtnText,
         dangerBtnText,
         variant,
-        btnType
+        btnType,
+        item,
     } = props;
+
+    console.log(item)
 
     let buttons
 
