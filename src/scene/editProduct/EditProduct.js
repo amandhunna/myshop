@@ -13,10 +13,10 @@ function EditProduct() {
     const getProduct = async () => {
 
         const requestData = {
-            url: config.url.product,
+            url: `${config.url.product}/${productId}`,
             timeout: 10000,
             method: 'get',
-            data: { _id: productId },
+            params: { _id: productId },
             token: localStorage.getItem('sos_token'),
         }
         const response = await helper.requestAPI(requestData);
