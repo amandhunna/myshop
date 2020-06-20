@@ -3,6 +3,7 @@ import { Row, Container, Spinner } from "react-bootstrap"
 import axios from 'axios';
 import ProductCard from "../../lib/components/productCard"
 import helper from "../../lib/helper/base";
+import logger from "../../lib/helper/logger"
 import config from "../../config"
 import "./css.css";
 
@@ -14,12 +15,17 @@ const EditProducts = () => {
         const requestData = {
             url: config.url.product,
             timeout: 10000,
-            method: 'Get',
+            method: 'get',
             token: localStorage.getItem('sos_token'),
         }
-        const response = await helper.requestAPI(requestData);
-        const resData = helper.formatApiResponse(response);
-        console.log(resData)
+        let resData = [];
+        try {
+            const response = await helper.requestAPI(requestData);
+            resData = helper.formatApiResponse(response);
+        }
+        catch (error) {
+            logger.error(error);
+        }
         const domData = resData.map(item => <ProductCard colSize={3} key={helper.randomKey("addProducts")} btnType="dangerPrimary" item={item} />)
         setData(domData);
         setIsLoading(false)

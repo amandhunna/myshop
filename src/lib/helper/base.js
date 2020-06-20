@@ -25,7 +25,7 @@ class Helper {
     formatApiResponse(response) {
         const { status } = response;
         if (status === 200 || status === 201) {
-            return response.data
+            return response.data || response.error;
         } else {
             return response
         }
@@ -67,7 +67,10 @@ class Helper {
             url,
             data,
             method,
-            headers: { ...token ? { Authorization: `Bearer ${token}` } : {} }
+            headers: {
+                "Content-Type": "application/json",
+                ...token ? { Authorization: `Bearer ${token.slice(1, token.length - 1)}` } : {}
+            }
         }
         logger.info("requestAPI foramtData", formatData)
         try {
