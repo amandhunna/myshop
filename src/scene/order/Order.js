@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, Card } from "react-bootstrap";
 import AcceptModal from "../../lib/components/acceptModal";
+import CustomJumbotron from "../../lib/components/customJumbotron";
 import RejectedModal from "../../lib/components/rejectedModal";
 import Spinner from "../../lib/components/growSpinner";
 import config from "../../config";
@@ -101,6 +102,8 @@ const GetCards = props => {
     }, []);
 
     if (isLoading) return <Spinner />;
+
+    if (!cards.length) return <CustomJumbotron header="No data" body="Currently have no orders" />
 
     let count = 0;
     const cardsDOM = <Row>
