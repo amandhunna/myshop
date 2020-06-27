@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
-import currentUserContext from "../../lib/components/context/currentUser";
-import helper from "../../lib/helper/base";
-import config from "../../config";
+import currentUserContext from "../../../lib/components/context/currentUser";
+import helper from "../../../lib/helper/base";
+import config from "../../../config";
 import "./css.css";
 
-function EditProduct() {
+function Product() {
     const [productData, setProductData] = useState({});
     const [isLoading, setIsLoading] = useState(true)
     const userContext = useContext(currentUserContext);
@@ -23,7 +23,6 @@ function EditProduct() {
         const resData = helper.formatApiResponse(response);
         setProductData(resData);
         setIsLoading(false)
-        console.log("--------<<<", resData)
     }
 
     useEffect(() => {
@@ -37,4 +36,4 @@ function EditProduct() {
     )
 }
 
-export default EditProduct
+export default Product;

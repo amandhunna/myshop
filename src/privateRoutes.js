@@ -1,10 +1,7 @@
-import EditProducts from "./scene/editProducts";
-import EditProduct from "./scene/editProduct";
-
 import Order from "./scene/order";
 import ComingSoon from "./scene/comingSoon"
-import BuyProducts from './scene/buyProducts';
-// import Profile from "./scene/profile"
+import { BuyProducts, Products, ProductDetail } from './scene/product';
+
 
 const routes = [
     {
@@ -20,29 +17,30 @@ const routes = [
         component: ComingSoon
     },
     {
+        path: '/orders',
+        titleComponents: { title: 'Orders', component: [] },
+        allowedRoles: ['admin', 'provider'],
+        component: Order
+    },
+    // products
+    {
         path: '/buyProducts',
         titleComponents: { title: 'Buy products', component: ["cart"] },
         component: BuyProducts,
         header: ["cart"],
         allowedRoles: ['admin', 'consumer'],
         unScrollable: true,
-    },
-    {
-        path: '/orders',
-        titleComponents: { title: 'Orders', component: [] },
-        allowedRoles: ['admin', 'provider'],
-        component: Order
     }, {
-        path: '/editProducts',
-        titleComponents: { title: 'Edit products', component: ["uploadProduct"] },
+        path: '/products',
+        titleComponents: { title: 'Products', component: ["uploadProduct"] },
         allowedRoles: ['admin', 'provider'],
-        component: EditProducts
+        component: Products
     },
     {
-        path: '/editProducts/:productId',
+        path: '/products/:productId',
         titleComponents: { title: 'Edit product', component: [] },
         allowedRoles: ['admin', 'provider'],
-        component: EditProduct
+        component: ProductDetail
     },
 ];
 

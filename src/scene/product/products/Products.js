@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Container, Spinner } from "react-bootstrap"
-import axios from 'axios';
-import ProductCard from "../../lib/components/productCard"
-import helper from "../../lib/helper/base";
-import logger from "../../lib/helper/logger"
-import config from "../../config"
+import ProductCard from "../../../lib/components/productCard"
+import helper from "../../../lib/helper/base";
+import logger from "../../../lib/helper/logger"
+import config from "../../../config"
 import "./css.css";
 
-const EditProducts = () => {
+const Products = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
     const getProductsList = async () => {
@@ -46,4 +45,4 @@ const EditProducts = () => {
         </Container>
     )
 }
-export default EditProducts;
+export default Products;

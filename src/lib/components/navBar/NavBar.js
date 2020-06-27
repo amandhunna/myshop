@@ -10,9 +10,9 @@ export default function NavBar(props) {
     const currentUser = useContext(CurrentUserContext) || {};
     console.log(currentUser)
     const lg = active === "active"
-    const adminLinks = ["home", "buyProducts", "editProducts", "order", "cart", "profile"]
+    const adminLinks = ["home", "buyProducts", "products", "orders", "cart", "profile"]
     const consumerLinks = ["home", "buyProducts", "cart", "profile"]
-    const providerLinks = ["home", "editProducts", "order", "profile"];
+    const providerLinks = ["home", "products", "orders", "profile"];
     const { isProvider, isAdmin } = currentUser;
 
 
@@ -46,7 +46,7 @@ function nav(link, lg = true) {
             <i className="fa fa-home"></i>{lg && "Home"}</Link>,
         buyProducts: <Link className="secondary" to="/buyProducts" > <i className="fa fa-shopping-basket"></i>{lg && "Buy Products"}</Link>,
 
-        editProducts: <Link className="secondary" to="/editProducts" >
+        products: <Link className="secondary" to="/products" >
             <i className="fas fa-edit"></i>
             {/* <i className="fa fa-upload"> </i>*/}
             {/* <i class="fa fa-product-hunt"></i> */}
@@ -59,7 +59,7 @@ function nav(link, lg = true) {
             {lg && "Cart"}
         </Link>,
 
-        order: <Link className="secondary" to="/orders">
+        orders: <Link className="secondary" to="/orders">
             {/* <i class="fa fa-cart-plus"></i> */}
             <i className="fa fa-truck"></i>{lg && "Orders"}</Link>,
 

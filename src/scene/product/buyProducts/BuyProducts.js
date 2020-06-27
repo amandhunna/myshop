@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Row, Col, Container } from "react-bootstrap";
-import ProductCard from "../../lib/components/productCard";
+import ProductCard from "../../../lib/components/productCard";
 import { dummyProducts, dummyCart } from "./dummyData";
-import baseHelper from "../../lib/helper/base";
+import baseHelper from "../../../lib/helper/base";
 import "./css.css";
 
 const { randomKey } = baseHelper;
