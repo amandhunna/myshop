@@ -2,33 +2,71 @@ import React, { useState, useEffect } from 'react';
 import { Button, Row, Col, Card } from "react-bootstrap";
 import AcceptModal from "../../lib/components/acceptModal";
 import RejectedModal from "../../lib/components/rejectedModal";
-import data from "./dummy";
+import Spinner from "../../lib/components/growSpinner";
+import config from "../../config";
+import helper from "../../lib/helper/base";
 import "./order.css";
 
 
-const getItems = customer => {
+/* 
+
+_id: "5edb5ca558bd7b287a9e5e45"
+parentId: "VbTwD"
+
+deliveryType: "BFbcB"
+deliveredTime: "r5t4ey"
+deliveryAddress: "aU1QT"
+
+expectedDeliveryTime: "10d4r"
+orderFrom: "o2jDW"
+orderItems: ["N5SCy"]
+orderTo: "keg5l"
+
+status: "spY86"
+rejectReason: "DJJGY"
+
+rate: 5
+note: "PNRMh"
+*/
+
+// individual card jsx data
+const getItems = order => {
     return (<div className="order-detail d-flex flex-column">
-        <div>Name: {customer.customerName}</div>
-        <div>Location: {customer.location}</div>
-        <div>Phone: {customer.phone}</div>
-        <div>Email: {customer.email}</div>
-        <div>Delivery type: {customer.deliveryType}</div>
-        <div>Expected delivery: {customer.expectedDelivery}</div>
-        <div>Order items: <ol>{customer.orderItems && customer.orderItems.map(item => <li className="ml-4">{item}</li>)}</ol></div>
-    </div>
+        <strong className="d-flex justify-content-center border-bottom">Customer detail</strong>
+        <div id="userInfo" className="d-flex flex-column">
+            <span></span>
+            <span>Name:<strong> {order.customerName}</strong></span>
+            <span>Phone:<strong> {order.phone}</strong></span>
+            <span>Email:<strong> {order.email}</strong></span>
+        </div>
+        <strong className="d-flex justify-content-center border-bottom">Order detail</strong>
+        <div id="deliveryInfo" className="d-flex flex-column mt-3">
+            <span>Delivery type:<strong> {order.deliveryType}</strong></span>
+            <span>Delivery address:<strong> {order.deliveryAddress}</strong></span>
+            <span>Expected delivery time:<strong> {order.expectedDeliveryTime} </strong></span>
+            <span>Delivered time:<strong> {order.deliveredTime} </strong></span>
+        </div>
+
+        <div id="orderInfo" className="d-flex flex-column mt-3">
+            <span>Status:<strong> {order.status}</strong></span>
+            <span>Note:<strong> {order.note}</strong></span>
+            <span>Order items:<ol>{order.orderItems && order.orderItems.map(item => <li className="ml-4">{item}</li>)}</ol></span>
+        </div>
+    </div >
     )
 }
 
+// individual card
 const GetCard = (props) => {
     const { cardNumber, customer, setModalShow, setModalItems, setRejectedModalShow } = props;
     return (<Card>
-        <Card.Header className="d-flex justify-content-center">#Card: {cardNumber}</Card.Header>
+        <Card.Header className="d-flex justify-content-center">#Order: {cardNumber}</Card.Header>
         <Card.Body>
-            <Card.Title>Special title treatment</Card.Title>
+            {/*      <Card.Title>Special title treatment</Card.Title> */}
             <Card.Text className="order">
                 {getItems(customer)}
             </Card.Text>
-            <div className="actionSection w-100 d-flex justify-content-center">
+            <div className="actionSection w-100 d-flex justify-content-center  border-top pt-2">
                 <Button className="mx-2" variant="danger" onClick={() => setRejectedModalShow(true)}>Reject order</Button>
                 <Button className="mx-2" variant="primary" onClick={() => {
                     setModalShow(true);
@@ -40,22 +78,41 @@ const GetCard = (props) => {
     </Card>);
 }
 
+// all cards data
 const GetCards = props => {
     const [cards, setCards] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const getOrders = async () => {
+        const requestData = {
+            url: `${config.url.order}`,
+            timeout: 10000,
+            method: 'get',
+            token: localStorage.getItem('sos_token'),
+        }
+        const response = await helper.requestAPI(requestData);
+        const resData = helper.formatApiResponse(response);
+        setCards(resData);
+        setIsLoading(false);
+    }
+
 
     useEffect(() => {
-        setCards(data)
-    }, [])
+        getOrders();
+    }, []);
+
+    if (isLoading) return <Spinner />;
+
     let count = 0;
-    const cardsDOm = <Row>
+    const cardsDOM = <Row>
         {cards.map((cardData) => <Col className="mt-3" sm={12} md={4} lg={3} ><GetCard customer={cardData} cardNumber={++count} {...props} /></Col>)}
     </Row>
 
-    return cardsDOm
+    return cardsDOM;
 
 }
 
-const Order = (props) => {
+// main component
+const Order = () => {
     const [modalShow, setModalShow] = useState(false);
     const [rejectedModalShow, setRejectedModalShow] = useState(false)
     const [modalItems, setModalItems] = useState([]);

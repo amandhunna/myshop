@@ -5,10 +5,11 @@ const config = {
         googleLogin: `${root}/googleLogin`,
         login: `${root}/login`,
         signUp: `${root}/signUp`,
+        
         user: `${root}/user`,
-        order: `${root}/order`,
         product: `${root}/product`,
         store: `${root}/store`,
+        order: `${root}/order`,
     }
 }
 
