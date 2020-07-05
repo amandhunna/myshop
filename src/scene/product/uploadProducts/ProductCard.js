@@ -2,15 +2,23 @@ import React, { useState } from 'react';
 import { Form, Card, Col, Row, Button } from 'react-bootstrap';
 
 const Variants = (props) => {
-    const { variantCount } = props
+    const { products, index: productIndex, setProducts } = props
+
+    const removeProduct = (index) => {
+        const newData = [...products]
+        newData[productIndex].variants.splice(index, 1);
+        console.log(index)
+        setProducts(newData);
+    }
+
     const dom = [];
-    for (let count = 0; count < variantCount; count++) {
+    for (let count = 0; count < products[productIndex].variants.length; count++) {
         dom.push(
             <Form.Group as={Col} md={5} className='border p-2 m-2' controlId="exampleForm.ControlSelect1">
                 <Form.Label>
                     <span className="d-flex spread-center">
                         <span>Variant {count + 1}</span>
-                        <Button variant="danger" className='ml-5' onClick={() => { }}>Remove variant</Button>
+                        <Button variant="danger" className='ml-5' onClick={() => { removeProduct(count) }}>Remove variant</Button>
                         <Button variant="info" className='ml-1' onClick={() => { }}>Mark as out of Stock</Button>
                     </span>
                 </Form.Label>
@@ -39,18 +47,32 @@ const Variants = (props) => {
 }
 
 const ProductCard = (props) => {
-    const [variantCount, setVariantCount] = useState(1)
-    const updateVariant = (event) => {
-        event.preventDefault();
-        setVariantCount(variantCount + 1);
+    const { products, index, setProducts } = props;
 
+    const defaultVariantData = {
+        type: '',
+        price: '',
+        description: '',
+        inStock: true,
+    }
+    const addVariant = () => {
+        const newData = [...products]
+        newData[index].variants.push(defaultVariantData);
+        setProducts(newData);
+    }
+
+    const removeProduct = (index) => {
+        setProducts(prev => {
+            const newData = [...prev];
+            newData.splice(index, 1);
+            return newData;
+        })
     }
 
     return (<Card className='mt-3'>
-        <Card.Header className="d-flex spread-center"><span>Product card </span> <Button variant="danger" className='ml-1' onClick={() => { }}>Remove product</Button></Card.Header>
+        <Card.Header className="d-flex spread-center"><span>Product card </span> <Button variant="danger" className='ml-1' onClick={() => removeProduct(index)} > Remove product</Button></Card.Header>
         <Card.Body>
             <Card.Text>
-
                 <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Product name</Form.Label>
@@ -65,11 +87,14 @@ const ProductCard = (props) => {
                         <div className=''>
                             <Form.Label className=''>
                                 <span>Product variants</span>
-                                <Button className='ml-5' onClick={updateVariant}>Add variant</Button>
+                                <Button className='ml-5' onClick={() => addVariant()}>Add variant</Button>
                             </Form.Label>
 
                             {/* product variants */}
-                            <Variants variantCount={variantCount} />
+                            <Variants
+                                products={products}
+                                index={index}
+                                setProducts={setProducts} />
                         </div>
                     </Form.Group>
 

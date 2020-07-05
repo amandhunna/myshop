@@ -2,14 +2,22 @@ import React, { useState } from 'react'
 import ProductCard from './ProductCard';
 import LoaderButton from "../../../lib/components/loaderButton";
 
+const defaultProductData = {
+    productName: '',
+    shopId: '',
+    variants: [],
+    images: [],
+    description: '',
+};
+
 const UploadProducts = () => {
-    const [product, setProduct] = useState([{}]);
+    const [products, setProducts] = useState([defaultProductData]);
 
     const addProduct = () => {
-        setProduct(prev => {
-            return [...prev, {}];
-        })
-    }
+        setProducts(prev => {
+            return [...prev, defaultProductData];
+        });
+    };
 
     return (
         <div>
@@ -18,12 +26,16 @@ const UploadProducts = () => {
                 <LoaderButton variant="primary" children="Add a product" onClick={addProduct} />
                 <LoaderButton className="ml-3" variant="secondary" children="Upload products" />
             </div>
-            {product.map(item => <ProductCard />)}
+            {products.map((_, index) => <ProductCard
+                index={index}
+                products={products}
+                setProducts={setProducts}
+            />)}
 
-            <div id="uploadAction" className='w-100 mt-3'>
+            {products.length && <div id="uploadAction" className='w-100 mt-3'>
                 <LoaderButton variant="primary" children="Add a product" onClick={addProduct} />
                 <LoaderButton className="ml-3" variant="secondary" children="Upload products" />
-            </div>
+            </div>}
         </div>
     )
 }
