@@ -8,8 +8,10 @@ const Variants = (props) => {
         dom.push(
             <Form.Group as={Col} md={5} className='border p-2 m-2' controlId="exampleForm.ControlSelect1">
                 <Form.Label>
-                    <span>
-                        Variant {count + 1}   <Button variant="danger" className='ml-5' onClick={() => { }}>Remove variant</Button>
+                    <span className="d-flex spread-center">
+                        <span>Variant {count + 1}</span>
+                        <Button variant="danger" className='ml-5' onClick={() => { }}>Remove variant</Button>
+                        <Button variant="info" className='ml-1' onClick={() => { }}>Mark as out of Stock</Button>
                     </span>
                 </Form.Label>
                 <div className="d-flex w-100">
@@ -21,6 +23,10 @@ const Variants = (props) => {
                         <Form.Control type="text" placeholder="Varient type" />
                     </span>
                 </div>
+                <Form.Group className="mt-2" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Varient description</Form.Label>
+                    <Form.Control as="textarea" rows="3" placeholder='Varient description' />
+                </Form.Group>
             </Form.Group>
         )
     }
@@ -36,13 +42,12 @@ const ProductCard = (props) => {
     const [variantCount, setVariantCount] = useState(1)
     const updateVariant = (event) => {
         event.preventDefault();
-        const { value } = event.target;
         setVariantCount(variantCount + 1);
 
     }
 
     return (<Card className='mt-3'>
-        <Card.Header>Product card</Card.Header>
+        <Card.Header className="d-flex spread-center"><span>Product card </span> <Button variant="danger" className='ml-1' onClick={() => { }}>Remove product</Button></Card.Header>
         <Card.Body>
             <Card.Text>
 
