@@ -4,7 +4,7 @@ import helper from "../../../lib/helper/base";
 import config from "../../../config";
 import "./css.css";
 
-function Product() {
+function ProductDetail() {
     const [productData, setProductData] = useState({});
     const [isLoading, setIsLoading] = useState(true)
     const userContext = useContext(currentUserContext);
@@ -36,4 +36,4 @@ function Product() {
     )
 }
 
-export default Product;
+export default ProductDetail;

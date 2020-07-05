@@ -35,17 +35,17 @@ const routes = [
         titleComponents: { title: 'Products', component: ["uploadProduct"] },
         allowedRoles: ['admin', 'provider'],
         component: Products
+    }, {
+        path: '/products/upload',
+        titleComponents: { title: 'Upload product', component: [] },
+        allowedRoles: ['admin', 'provider'],
+        component: UploadProducts
     },
     {
         path: '/products/:productId',
         titleComponents: { title: 'Edit product', component: [] },
         allowedRoles: ['admin', 'provider'],
         component: ProductDetail
-    }, {
-        path: '/products/upload',
-        titleComponents: { title: 'Upload product', component: [] },
-        allowedRoles: ['admin', 'provider'],
-        component: UploadProducts
     },
 ];
 
