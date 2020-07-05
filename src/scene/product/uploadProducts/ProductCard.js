@@ -70,7 +70,7 @@ const ProductCard = (props) => {
     }
 
     return (<Card className='mt-3'>
-        <Card.Header className="d-flex spread-center"> <h1>{index} </h1> <Button variant="danger" className='ml-1' onClick={() => removeProduct(index)} > Remove product</Button></Card.Header>
+        <Card.Header className="d-flex spread-center"> <h1>#{index + 1} </h1> <Button variant="danger" className='ml-1' onClick={() => removeProduct(index)} > Remove product</Button></Card.Header>
         <Card.Body>
             <Card.Text>
                 <Form>
