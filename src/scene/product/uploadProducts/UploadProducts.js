@@ -5,23 +5,22 @@ import LoaderButton from "../../../lib/components/loaderButton";
 const defaultProductData = {
     productName: '',
     shopId: '',
-    variants: [{
+    variants: [/* {
         type: '',
         price: '',
         description: '',
         inStock: true,
-    }],
+    } */],
     images: [],
     description: '',
 };
 
 const UploadProducts = () => {
-    const [products, setProducts] = useState([defaultProductData]);
+    const [products, setProducts] = useState([{ ...defaultProductData }]);
 
     const addProduct = () => {
-        setProducts(prev => {
-            return [...prev, defaultProductData];
-        });
+        const newData = [...products, { ...defaultProductData }];
+        setProducts(newData);
     };
 
     return (
@@ -31,8 +30,9 @@ const UploadProducts = () => {
                 <LoaderButton variant="primary" children="Add a product" onClick={addProduct} />
                 <LoaderButton className="ml-3" variant="secondary" children="Upload products" />
             </div>
-            {products.map((_, index) => <ProductCard
+            {products.map((product, index) => <ProductCard
                 index={index}
+                product={product}
                 products={products}
                 setProducts={setProducts}
             />)}
