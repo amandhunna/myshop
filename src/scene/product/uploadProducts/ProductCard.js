@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Card, Col, Row, Button } from 'react-bootstrap';
 
 const Variants = (props) => {

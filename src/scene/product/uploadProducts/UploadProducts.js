@@ -5,7 +5,12 @@ import LoaderButton from "../../../lib/components/loaderButton";
 const defaultProductData = {
     productName: '',
     shopId: '',
-    variants: [],
+    variants: [{
+        type: '',
+        price: '',
+        description: '',
+        inStock: true,
+    }],
     images: [],
     description: '',
 };
