@@ -59,7 +59,7 @@ const ProductCard = (props) => {
     }
     const addVariant = () => {
         const newData = [...products]
-        newData[index].variants.push(defaultVariantData);
+        newData[index].variants = [...products[index].variants, { ...defaultVariantData }]
         setProducts(newData);
     }
 

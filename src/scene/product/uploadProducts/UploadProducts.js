@@ -5,12 +5,12 @@ import LoaderButton from "../../../lib/components/loaderButton";
 const defaultProductData = {
     productName: '',
     shopId: '',
-    variants: [/* {
+    variants: [{
         type: '',
         price: '',
         description: '',
         inStock: true,
-    } */],
+    }],
     images: [],
     description: '',
 };
@@ -22,7 +22,9 @@ const UploadProducts = () => {
         const newData = [...products, { ...defaultProductData }];
         setProducts(newData);
     };
-
+    /*  setInterval(() => {
+         console.log('----------', defaultProductData)
+     }, 1000); */
     return (
         <div>
 
