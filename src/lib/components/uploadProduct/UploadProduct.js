@@ -1,21 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button } from "react-bootstrap";
+import currentUserContent from "../context/currentUser";
 import "./css.css";
 
 export default function UploadProduct() {
-    return (<Button className="uploadProduct" variant="primary"></Button>)
-    /* return (
-        <InputGroup className="my-3">
-            <InputGroup.Prepend>
-                <InputGroup.Text id="basic-addon1">&#8377;</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-                placeholder="Product Price"
-                aria-label="Amount (to the nearest rupee)"
-            />
-            <InputGroup.Append>
-                <Button variant="primary">Upload Image</Button>
-            </InputGroup.Append>
-        </InputGroup>
-    ) */
+    const currentUser = useContext(currentUserContent);
+    console.log(currentUser);
+    return (<Button className="uploadProduct" onClick={() => currentUser.history.push('/products/upload')} variant="primary"></Button>)
 }

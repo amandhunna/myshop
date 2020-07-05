@@ -115,7 +115,9 @@ const InfoForm = props => {
           }
         }
         // db errors
-        if (responseData.data && responseData.data.status !== 200) {
+        if (responseData.data &&
+          responseData.data.status &&
+          responseData.data.status !== 200) {
           const error = JSON.parse(response.data.error);
           toastBody = error.message;
         }

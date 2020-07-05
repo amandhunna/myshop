@@ -1,6 +1,6 @@
 import Order from "./scene/order";
 import ComingSoon from "./scene/comingSoon"
-import { BuyProducts, Products, ProductDetail } from './scene/product';
+import { BuyProducts, Products, ProductDetail, UploadProducts } from './scene/product';
 
 
 const routes = [
@@ -41,6 +41,11 @@ const routes = [
         titleComponents: { title: 'Edit product', component: [] },
         allowedRoles: ['admin', 'provider'],
         component: ProductDetail
+    }, {
+        path: '/products/upload',
+        titleComponents: { title: 'Upload product', component: [] },
+        allowedRoles: ['admin', 'provider'],
+        component: UploadProducts
     },
 ];
 
