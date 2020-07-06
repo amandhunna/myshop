@@ -23,12 +23,16 @@ const UploadProducts = () => {
         setProducts(newData);
     };
 
+    const uploadProducts = () => {
+        console.log(products);
+    };
+
     return (
         <div>
 
             <div id="uploadAction" className='w-100 '>
                 <LoaderButton variant="primary" children="Add a product" onClick={addProduct} />
-                <LoaderButton className="ml-3" variant="secondary" children="Upload products" />
+                <LoaderButton className="ml-3" variant="secondary" onClick={uploadProducts} children="Upload products" />
             </div>
             {products.map((product, index) => <ProductCard
                 index={index}
@@ -39,7 +43,7 @@ const UploadProducts = () => {
 
             {products.length && <div id="uploadAction" className='w-100 mt-3'>
                 <LoaderButton variant="primary" children="Add a product" onClick={addProduct} />
-                <LoaderButton className="ml-3" variant="secondary" children="Upload products" />
+                <LoaderButton className="ml-3" variant="secondary" onClick={uploadProducts} children="Upload products" />
             </div>}
         </div>
     )

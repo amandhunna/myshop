@@ -69,6 +69,33 @@ const ProductCard = (props) => {
         setProducts(newData);
     }
 
+    const updateProductState = updateData => {
+        const {
+            productIndex,
+            productKey,
+            propertyIndex,
+            propertyKey,
+            value,
+        } = updateData;
+        const newData = [...products];
+        const ref = newData[productIndex];
+        switch (productKey) {
+            default: {
+                ref[productKey] = value;
+                break;
+            }
+            case 'variants': {
+                ref[productKey][propertyIndex][propertyKey] = value;
+                break;
+            }
+            case 'images': {
+                ref[productKey][propertyIndex] = value;
+                break;
+            }
+        }
+        setProducts(newData);
+    }
+
     return (<Card className='mt-3'>
         <Card.Header className="d-flex spread-center"> <h1>#{index + 1} </h1> <Button variant="danger" className='ml-1' onClick={() => removeProduct(index)} > Remove product</Button></Card.Header>
         <Card.Body>
@@ -76,9 +103,21 @@ const ProductCard = (props) => {
                 <Form>
                     <Form.Group controlId="exampleForm.ControlSelect1">
                         <Form.Label>Product name</Form.Label>
-                        <Form.Control type="text" placeholder="Product name" />
+                        <Form.Control
+                            type="text"
+                            placeholder="Product name"
+                            value={products[index].productName}
+                            onChange={(e) => {
+                                updateProductState({
+                                    productIndex: index,
+                                    productKey: "productName",
+                                    propertyIndex: null,
+                                    propertyKey: null,
+                                    value: e.target.value,
+                                })
+                            }} />
                     </Form.Group>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Group className="d-none" controlId="exampleForm.ControlSelect1">
                         <Form.Label>Shop id</Form.Label>
                         <Form.Control type="text" placeholder="shop id" readOnly />
                     </Form.Group>
@@ -101,12 +140,34 @@ const ProductCard = (props) => {
                     <Form.Group>
                         {/* <Form.File id="exampleFormControlFile1" label="Upload image" /> */}
                         <Form.Label>Product image</Form.Label>
-                        <Form.Control type="text" placeholder="Product image url" />
+                        <Form.Control type="text" placeholder="Product image url"
+                            value={products[index].images[0]}
+                            onChange={(e) => {
+                                updateProductState({
+                                    productIndex: index,
+                                    productKey: "images",
+                                    propertyIndex: 0,
+                                    propertyKey: null,
+                                    value: e.target.value,
+                                })
+                            }}
+                        />
                     </Form.Group>
 
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                         <Form.Label>Product description</Form.Label>
-                        <Form.Control as="textarea" rows="3" placeholder='Product description' />
+                        <Form.Control as="textarea" rows="3" placeholder='Product description'
+                            value={products[index].description}
+                            onChange={(e) => {
+                                updateProductState({
+                                    productIndex: index,
+                                    productKey: "description",
+                                    propertyIndex: null,
+                                    propertyKey: null,
+                                    value: e.target.value,
+                                })
+                            }}
+                        />
                     </Form.Group>
                 </Form> </Card.Text>
         </Card.Body>
