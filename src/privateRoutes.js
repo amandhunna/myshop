@@ -43,7 +43,7 @@ const routes = [
     },
     {
         path: '/products/:productId',
-        titleComponents: { title: 'Edit product', component: [] },
+        titleComponents: { title: 'Product detail', component: [] },
         allowedRoles: ['admin', 'provider'],
         component: ProductDetail
     },

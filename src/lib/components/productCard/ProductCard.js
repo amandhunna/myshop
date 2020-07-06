@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Button, Col, Card, Image } from "react-bootstrap";
+import currentUserContext from "../../components/context/currentUser";
 import "./css.css";
 
 const ProductCard = (props) => {
@@ -12,8 +13,7 @@ const ProductCard = (props) => {
         btnType,
         item,
     } = props;
-
-    console.log(item)
+    const currentUser = useContext(currentUserContext);
 
     let buttons
 
@@ -23,7 +23,8 @@ const ProductCard = (props) => {
                 <Button
                     className="w-100"
                     variant={variant || "primary"}
-                    onClick={() => { }}>{primaryBtnText || dangerBtnText || "Add to cart"}</Button>
+                    onClick={() => { }}>
+                    {primaryBtnText || dangerBtnText || "Add to cart"}</Button>
             </div>)
             break;
 
@@ -31,16 +32,20 @@ const ProductCard = (props) => {
             buttons = (<div className="deleteEditBtn">
                 <Button
                     variant="danger"
-                    onClick={() => { }}>{dangerBtnText || "Delete"}</Button>
+                    onClick={() => { }}>
+                    {dangerBtnText || "Delete"}
+                </Button>
                 <Button
                     variant="primary"
-                    onClick={() => { }}>{primaryBtnText || "Edit"}</Button>
+                    onClick={() => {
+                        currentUser.history.push(`/products/${item._id}`)
+                    }}>
+                    {primaryBtnText || "Edit"}</Button>
             </div>)
             break;
         default: buttons = "";
             break;
     }
-
 
     return (
         <Col md={colSize} className="my-3">

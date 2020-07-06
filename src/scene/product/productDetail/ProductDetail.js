@@ -21,6 +21,7 @@ function ProductDetail() {
         }
         const response = await helper.requestAPI(requestData);
         const resData = helper.formatApiResponse(response);
+        console.log(resData)
         setProductData(resData);
         setIsLoading(false)
     }

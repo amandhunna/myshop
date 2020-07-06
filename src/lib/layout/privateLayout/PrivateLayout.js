@@ -72,7 +72,6 @@ const PrivateLayout = (props) => {
                             <GetTitleComponent titleComponents={titleComponents} {...searchBarProps} />
                         </div>
                         <div className={!unScrollable && "scroll-able"}>
-                            {console.log(Component)}
                             <Component route={route} {...searchBarProps} />
                         </div>
                     </Col>

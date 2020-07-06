@@ -22,9 +22,7 @@ const UploadProducts = () => {
         const newData = [...products, { ...defaultProductData }];
         setProducts(newData);
     };
-    /*  setInterval(() => {
-         console.log('----------', defaultProductData)
-     }, 1000); */
+
     return (
         <div>
 
