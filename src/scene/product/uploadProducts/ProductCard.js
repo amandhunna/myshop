@@ -2,10 +2,9 @@ import React from 'react';
 import { Form, Card, Col, Row, Button } from 'react-bootstrap';
 
 const Variants = (props) => {
-    const { products, index: productIndex, setProducts } = props
+    const { products, index: productIndex, setProducts, updateProductState } = props
 
     const removeVariant = (index) => {
-        console.log('-------', productIndex)
         const newData = [...products]
         newData[productIndex].variants.splice(index, 1);
         console.log(index)
@@ -14,6 +13,7 @@ const Variants = (props) => {
 
     const dom = [];
     for (let count = 0; count < products[productIndex].variants.length; count++) {
+        const inputValue = products[productIndex].variants[count];
         dom.push(
             <Form.Group as={Col} md={5} className='border p-2 m-2' controlId="exampleForm.ControlSelect1">
 
@@ -21,21 +21,55 @@ const Variants = (props) => {
                     <span className="d-flex spread-center">
                         <span>Variant {count + 1}</span>
                         <Button variant="danger" className='ml-5' onClick={() => { removeVariant(count) }}>Remove variant</Button>
-                        <Button variant="info" className='ml-1' onClick={() => { }}>Mark as out of Stock</Button>
+                        <Button variant="info" className='ml-1 d-none' onClick={() => { }}>Mark as out of Stock</Button>
                     </span>
                 </Form.Label>
                 <div className="d-flex w-100">
                     <span>
                         <Form.Label>Type</Form.Label>
-                        <Form.Control type="text" placeholder="Varient type" />
+                        <Form.Control type="text" placeholder="Varient type"
+                            value={inputValue.type}
+                            onChange={(e) => {
+                                updateProductState({
+                                    productIndex,
+                                    productKey: "variants",
+                                    propertyIndex: count,
+                                    propertyKey: 'type',
+                                    value: e.target.value,
+                                })
+                            }}
+                        />
                     </span><span className="ml-3">
+
                         <Form.Label>Price</Form.Label>
-                        <Form.Control type="text" placeholder="Varient type" />
+                        <Form.Control type="text" placeholder="Varient type"
+                            value={inputValue.price}
+                            onChange={(e) => {
+                                updateProductState({
+                                    productIndex,
+                                    productKey: "variants",
+                                    propertyIndex: count,
+                                    propertyKey: 'price',
+                                    value: e.target.value,
+                                })
+                            }}
+                        />
                     </span>
                 </div>
                 <Form.Group className="mt-2" controlId="exampleForm.ControlTextarea1">
                     <Form.Label>Varient description</Form.Label>
-                    <Form.Control as="textarea" rows="3" placeholder='Varient description' />
+                    <Form.Control as="textarea" rows="3" placeholder='Varient description'
+                        value={inputValue.description}
+                        onChange={(e) => {
+                            updateProductState({
+                                productIndex,
+                                productKey: "variants",
+                                propertyIndex: count,
+                                propertyKey: 'description',
+                                value: e.target.value,
+                            })
+                        }}
+                    />
                 </Form.Group>
             </Form.Group>
         )
@@ -133,7 +167,9 @@ const ProductCard = (props) => {
                             <Variants
                                 products={products}
                                 index={index}
-                                setProducts={setProducts} />
+                                setProducts={setProducts}
+                                updateProductState={updateProductState}
+                            />
                         </div>
                     </Form.Group>
 
