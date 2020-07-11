@@ -21,7 +21,7 @@ const Variants = (props) => {
                     <span className="d-flex spread-center">
                         <span>Variant {count + 1}</span>
                         <Button variant="danger" className='ml-5' onClick={() => { removeVariant(count) }}>Remove variant</Button>
-                        <Button variant="info" className='ml-1 d-none' onClick={() => { }}>Mark as out of Stock</Button>
+                        <Button variant="info" className='ml-1' onClick={() => { }}>Mark as out of Stock</Button>
                     </span>
                 </Form.Label>
                 <div className="d-flex w-100">
@@ -177,7 +177,7 @@ const ProductCard = (props) => {
                         {/* <Form.File id="exampleFormControlFile1" label="Upload image" /> */}
                         <Form.Label>Product image</Form.Label>
                         <Form.Control type="text" placeholder="Product image url"
-                            value={products[index].images[0]}
+                            value={products[index].images && products[index].images[0]}
                             onChange={(e) => {
                                 updateProductState({
                                     productIndex: index,
@@ -205,7 +205,8 @@ const ProductCard = (props) => {
                             }}
                         />
                     </Form.Group>
-                </Form> </Card.Text>
+                </Form>
+            </Card.Text>
         </Card.Body>
     </Card>)
 
