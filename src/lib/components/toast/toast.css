@@ -1,0 +1,12 @@
+.toast.show {
+  display: block;
+  opacity: 1;
+  position: absolute;
+  z-index: 9999;
+  right: 0%;
+  top: 0%;
+}
+.toast-body {
+  padding: .75rem;
+  color: #000;
+}

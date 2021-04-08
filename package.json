@@ -1,0 +1,47 @@
+{
+  "name": "meri-dukan",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-google-maps/api": "^1.9.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "formik": "^2.1.4",
+    "jwt-decode": "^2.2.0",
+    "qs": "^6.9.4",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-datetime": "^2.16.3",
+    "react-datetime-picker": "^3.0.2",
+    "react-dom": "^16.13.1",
+    "react-google-login": "^5.1.20",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "yup": "^0.28.5"
+  },
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

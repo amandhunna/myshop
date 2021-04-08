@@ -1,0 +1,66 @@
+nav#sideBar {
+  display: flex !important;
+  flex-direction: column;
+  background: #343a40 !important;
+  color: black;
+  transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: -300px;
+  z-index: 9;
+}
+nav#sideBar.active {
+  max-width: 300px;
+  z-index: 99;
+  left: 0;
+}
+
+.active-cart {
+  color: indianred;
+}
+
+.secondary {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+nav > a {
+  padding: 1rem;
+  text-decoration: none;
+}
+
+nav > a > i {
+  margin-right: 1rem;
+}
+
+a:hover {
+  color: white;
+}
+
+a:active {
+  color: white;
+  text-decoration: none;
+}
+
+.active > a {
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .active {
+    padding: 0px;
+    width: auto;
+    z-index: 1;
+  }
+  nav#sideBar {
+    color: black;
+    display: flex !important;
+    flex-direction: row;
+    left: 0;
+    position: relative;
+  }
+}

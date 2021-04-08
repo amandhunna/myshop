@@ -1,0 +1,26 @@
+ol {
+  margin: 0;
+  padding-left: 30px;
+  /* list-style-position: inside; */
+}
+.order {
+  height: 400px;
+}
+.order-detail {
+  overflow: scroll;
+  height: 90%;
+}
+
+/* modal */
+span.react-datetime-picker__inputGroup__divider {
+  color: black;
+}
+.dateTimePicker {
+  border: 1px solid;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: cornsilk;
+  padding: 0.5rem;
+}
